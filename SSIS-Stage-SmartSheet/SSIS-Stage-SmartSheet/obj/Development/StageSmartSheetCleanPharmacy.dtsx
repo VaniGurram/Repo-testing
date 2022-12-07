@@ -1,0 +1,2267 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/21/2019 9:34:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-BIS-SQL-01T"
+  DTS:CreatorName="FCS\vani.gurram.FCS"
+  DTS:DTSID="{0EE0158E-DE9C-40A0-9C6A-515854152BD4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StageSmartSheetCleanPharmacy"
+  DTS:PackageType="5"
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{7918AA8D-9B9E-492E-82DF-F5A9E8B658F8}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{8A1C2086-6C70-48DF-83AF-635BD8568E17}"
+      DTS:ObjectName="dtManualLoadDate">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{DE95205A-F148-4A80-B977-FE53BC26064B}"
+      DTS:ObjectName="intBatchID">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DDBBCC60-1907-4412-AC67-4F63AE702E7F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::dtStatusChangedDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCreateDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/1/2019 12:56:09 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FFD8FDDF-E84B-4FD0-B635-F6539F747C9F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtlastLoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">8/21/2019 10:41:14 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{07F79050-5829-44BD-8758-7B79D92AE2B6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::dtStatusChangedDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtStatusChangeDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/1/2019 12:56:09 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8350ECAE-099F-4292-B48A-70A6E1C44FC3}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::intBatchID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="intBatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4C1BB83E-66FC-4D1E-9E29-75D827E3A41C}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intPackageID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{D7F26115-C852-47C5-861A-4599C851B728}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intRowsLoaded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5A8518CD-9FB0-4434-86E8-2A6511175F97}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::StringOpExStage]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strCPRPlusSourceDBName">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=AZC-BIS-SQL-002;Initial Catalog=AONOpExStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{92D85EA2-844C-452E-8AC8-240FFCFBBBEF}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Stage SmartSheet Clean Pharmacy&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StrSourceTableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Stage SmartSheet Clean Pharmacy</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Get SmartSheet Clean Pharmacy"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{3938822F-3671-4647-A4F7-5E1019FA9DEE}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Get SmartSheet Clean Pharmacy"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DEST SmartSheet Clean Pharmacy"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StgSmartSheetCleanPharmacy]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Connections[OleDbConnection]"
+                  connectionManagerID="{994E1584-413C-4FA6-8938-4B6DA199F080}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i8"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Created]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Clinic Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Clinic Name"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Clinic Name]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Medication Dispensing]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Medication Dispensing"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Dispensing]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Dispensing]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Medication Preparation]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Medication Preparation"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Preparation]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Preparation]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Medication Double Check]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Medication Double Check"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Double Check]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Daily Audit of Nucleus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Daily Audit of Nucleus"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Daily Audit of Nucleus]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Daily Audit of Nucleus]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Daily Hood Cleaning]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Daily Hood Cleaning"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Daily Hood Cleaning]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Daily Hood Cleaning]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Weekly Audit of Nucleus]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Weekly Audit of Nucleus"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Audit of Nucleus]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Audit of Nucleus]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Weekly Logs signed off]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Weekly Logs signed off"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Logs signed off]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Logs signed off]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Weekly Hood Cleaning]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Weekly Hood Cleaning"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Hood Cleaning]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Hood Cleaning]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Confirmed 2 RN signatures on MAR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Confirmed 2 RN signatures on MAR"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed 2 RN signatures on MAR]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Confirmed fluids for dilution]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Confirmed fluids for dilution"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed fluids for dilution]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed fluids for dilution]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Confirmed waste correct on MAR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Confirmed waste correct on MAR"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed waste correct on MAR]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed waste correct on MAR]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Gloves donned?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Gloves donned?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Gloves donned?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Gloves donned?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Nucleus Pt ID confirmed to MAR?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus Pt ID confirmed to MAR?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Nucleus drugs selected match MAR?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Nucleus drugs selected match MAR?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus drugs selected match MAR?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Nucleus doses match the MAR?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Nucleus doses match the MAR?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus doses match the MAR?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus doses match the MAR?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Correct vials pulled from Nucleus? (min. waste)"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Correct vials pulled from Nucleus? (min. waste)]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Vial expiration dates checked?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Vial expiration dates checked?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Vial expiration dates checked?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Vial expiration dates checked?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Wearing Gown?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Wearing Gown?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Wearing Gown?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Wearing Gown?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Do printed labels match MAR?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Do printed labels match MAR?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Do printed labels match MAR?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Do printed labels match MAR?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Medications prepared correctly?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Medications prepared correctly?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medications prepared correctly?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medications prepared correctly?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Labels correctly applied to meds?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Labels correctly applied to meds?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Labels correctly applied to meds?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Labels correctly applied to meds?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Medication Double Check performed correctly?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Medication Double Check performed correctly?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check performed correctly?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Double Check performed correctly?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Medication further diluted correctly? (if req'd)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Medication further diluted correctly? (if req'd)"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication further diluted correctly? (if req'd)]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Dilution observed by 2nd PharmTech / Nurse?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Placed all meds in transport bag/bin?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Placed all meds in transport bag/bin?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Placed all meds in transport bag/bin?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[20% Audit Nucleus completed?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="20% Audit Nucleus completed?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[20% Audit Nucleus completed?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[20% Audit Nucleus completed?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Signed Daily Hood Cleaning Log?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Signed Daily Hood Cleaning Log?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed Daily Hood Cleaning Log?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[100% Audit Nucleus completed?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="100% Audit Nucleus completed?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[100% Audit Nucleus completed?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[100% Audit Nucleus completed?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Signed the Eye Wash Station Log?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Signed the Eye Wash Station Log?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed the Eye Wash Station Log?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Signed the Controlled Substance Log?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Signed the Controlled Substance Log?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Controlled Substance Log?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed the Controlled Substance Log?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[Performed  deactivation hood cleaning?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Performed  deactivation hood cleaning?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Performed deactivation hood cleaning?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Performed  deactivation hood cleaning?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[AUDITOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="AUDITOR"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[AUDITOR]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A DAILY OR A WEEKLY AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[IS THIS A DAILY TASKS AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A DAILY TASKS AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A DAILY TASKS AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY TASKS AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A FINAL MEDICATION PREPARATION AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A MEDICATION DOUBLE CHECK AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A MEDICATION PREPARATION AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A MEDICATION PREPARATION AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].Columns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A PRE-DISPENSING PREPARATION AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Dispensing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Dispensing" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Preparation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Preparation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Double Check" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Daily Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Daily Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Daily Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Daily Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Weekly Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Logs signed off]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Weekly Logs signed off" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Weekly Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirmed 2 RN signatures on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed fluids for dilution]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirmed fluids for dilution" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed waste correct on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirmed waste correct on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Gloves donned?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Gloves donned?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nucleus Pt ID confirmed to MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nucleus drugs selected match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus doses match the MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nucleus doses match the MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Correct vials pulled from Nucleus? (min. waste)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Vial expiration dates checked?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Vial expiration dates checked?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Wearing Gown?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Wearing Gown?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Do printed labels match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Do printed labels match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medications prepared correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medications prepared correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Labels correctly applied to meds?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Labels correctly applied to meds?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check performed correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Double Check performed correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication further diluted correctly? (if req'd)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dilution observed by 2nd PharmTech / Nurse?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Placed all meds in transport bag/bin?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[20% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="20% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Signed Daily Hood Cleaning Log?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[100% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="100% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Signed the Eye Wash Station Log?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Controlled Substance Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Signed the Controlled Substance Log?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[Performed deactivation hood cleaning?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Performed deactivation hood cleaning?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[LoadDate]"
+                      dataType="dbTimeStamp"
+                      name="LoadDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A DAILY TASKS AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A DAILY TASKS AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A FINAL MEDICATION PREPARATION AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A MEDICATION DOUBLE CHECK AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A MEDICATION PREPARATION AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A PRE-DISPENSING PREPARATION AUDIT?" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE SRC SmartSheet Clean Pharmacy"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">exec [usp_SmartSheetPharmacy] 'I'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::StrSourceQuery</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Connections[OleDbConnection]"
+                  connectionManagerID="{994E1584-413C-4FA6-8938-4B6DA199F080}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Created]"
+                      name="Created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      name="Clinic Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Dispensing]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Dispensing]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Dispensing]"
+                      name="Medication Dispensing"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Preparation]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Preparation]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Preparation]"
+                      name="Medication Preparation"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Double Check]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Double Check]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Double Check]"
+                      name="Medication Double Check"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Daily Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Daily Audit of Nucleus]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Daily Audit of Nucleus]"
+                      name="Daily Audit of Nucleus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Daily Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Daily Hood Cleaning]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Daily Hood Cleaning]"
+                      name="Daily Hood Cleaning"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Weekly Audit of Nucleus]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Audit of Nucleus]"
+                      name="Weekly Audit of Nucleus"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Logs signed off]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Weekly Logs signed off]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Logs signed off]"
+                      name="Weekly Logs signed off"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Weekly Hood Cleaning]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Weekly Hood Cleaning]"
+                      name="Weekly Hood Cleaning"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      name="Confirmed 2 RN signatures on MAR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed fluids for dilution]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Confirmed fluids for dilution]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed fluids for dilution]"
+                      name="Confirmed fluids for dilution"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed waste correct on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Confirmed waste correct on MAR]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Confirmed waste correct on MAR]"
+                      name="Confirmed waste correct on MAR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Gloves donned?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Gloves donned?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Gloves donned?]"
+                      name="Gloves donned?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      name="Nucleus Pt ID confirmed to MAR?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus drugs selected match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus drugs selected match MAR?]"
+                      name="Nucleus drugs selected match MAR?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus doses match the MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Nucleus doses match the MAR?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Nucleus doses match the MAR?]"
+                      name="Nucleus doses match the MAR?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      name="Correct vials pulled from Nucleus? (min. waste)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Vial expiration dates checked?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Vial expiration dates checked?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Vial expiration dates checked?]"
+                      name="Vial expiration dates checked?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Wearing Gown?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Wearing Gown?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Wearing Gown?]"
+                      name="Wearing Gown?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Do printed labels match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Do printed labels match MAR?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Do printed labels match MAR?]"
+                      name="Do printed labels match MAR?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medications prepared correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medications prepared correctly?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medications prepared correctly?]"
+                      name="Medications prepared correctly?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Labels correctly applied to meds?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Labels correctly applied to meds?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Labels correctly applied to meds?]"
+                      name="Labels correctly applied to meds?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Double Check performed correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Double Check performed correctly?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication Double Check performed correctly?]"
+                      name="Medication Double Check performed correctly?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      name="Medication further diluted correctly? (if req'd)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      name="Dilution observed by 2nd PharmTech / Nurse?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Placed all meds in transport bag/bin?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Placed all meds in transport bag/bin?]"
+                      name="Placed all meds in transport bag/bin?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[20% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[20% Audit Nucleus completed?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[20% Audit Nucleus completed?]"
+                      name="20% Audit Nucleus completed?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      name="Signed Daily Hood Cleaning Log?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[100% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[100% Audit Nucleus completed?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[100% Audit Nucleus completed?]"
+                      name="100% Audit Nucleus completed?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed the Eye Wash Station Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed the Eye Wash Station Log?]"
+                      name="Signed the Eye Wash Station Log?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed the Controlled Substance Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Signed the Controlled Substance Log?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Signed the Controlled Substance Log?]"
+                      name="Signed the Controlled Substance Log?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[AUDITOR]"
+                      name="AUDITOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Performed  deactivation hood cleaning?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[Performed  deactivation hood cleaning?]"
+                      name="Performed  deactivation hood cleaning?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY TASKS AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A DAILY TASKS AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY TASKS AUDIT?]"
+                      name="IS THIS A DAILY TASKS AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      name="IS THIS A FINAL MEDICATION PREPARATION AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      name="IS THIS A MEDICATION DOUBLE CHECK AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      name="IS THIS A MEDICATION PREPARATION AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].Columns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      name="IS THIS A PRE-DISPENSING PREPARATION AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Dispensing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Dispensing" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Preparation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Preparation" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Double Check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Double Check" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Daily Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Daily Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Daily Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Daily Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Weekly Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Weekly Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Weekly Logs signed off]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Weekly Logs signed off" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Weekly Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Weekly Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirmed 2 RN signatures on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Confirmed fluids for dilution]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirmed fluids for dilution" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Confirmed waste correct on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirmed waste correct on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Gloves donned?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Gloves donned?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nucleus Pt ID confirmed to MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nucleus drugs selected match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Nucleus doses match the MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nucleus doses match the MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Correct vials pulled from Nucleus? (min. waste)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Vial expiration dates checked?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Vial expiration dates checked?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Wearing Gown?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Wearing Gown?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Do printed labels match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Do printed labels match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medications prepared correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medications prepared correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Labels correctly applied to meds?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Labels correctly applied to meds?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication Double Check performed correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication Double Check performed correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Medication further diluted correctly? (if req'd)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Dilution observed by 2nd PharmTech / Nurse?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Placed all meds in transport bag/bin?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[20% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="20% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Signed Daily Hood Cleaning Log?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[100% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="100% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Signed the Eye Wash Station Log?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Signed the Controlled Substance Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Signed the Controlled Substance Log?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Performed  deactivation hood cleaning?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A DAILY TASKS AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A DAILY TASKS AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A FINAL MEDICATION PREPARATION AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A MEDICATION DOUBLE CHECK AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A MEDICATION PREPARATION AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A PRE-DISPENSING PREPARATION AUDIT?" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i8"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Dispensing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Dispensing]"
+                      name="Medication Dispensing" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Preparation]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Preparation]"
+                      name="Medication Preparation" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Double Check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Double Check]"
+                      name="Medication Double Check" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Daily Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Daily Audit of Nucleus]"
+                      name="Daily Audit of Nucleus" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Daily Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Daily Hood Cleaning]"
+                      name="Daily Hood Cleaning" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Weekly Audit of Nucleus]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Weekly Audit of Nucleus]"
+                      name="Weekly Audit of Nucleus" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Weekly Logs signed off]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Weekly Logs signed off]"
+                      name="Weekly Logs signed off" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Weekly Hood Cleaning]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Weekly Hood Cleaning]"
+                      name="Weekly Hood Cleaning" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      name="Confirmed 2 RN signatures on MAR" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Confirmed fluids for dilution]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Confirmed fluids for dilution]"
+                      name="Confirmed fluids for dilution" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Confirmed waste correct on MAR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Confirmed waste correct on MAR]"
+                      name="Confirmed waste correct on MAR" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Gloves donned?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Gloves donned?]"
+                      name="Gloves donned?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      name="Nucleus Pt ID confirmed to MAR?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Nucleus drugs selected match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Nucleus drugs selected match MAR?]"
+                      name="Nucleus drugs selected match MAR?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Nucleus doses match the MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Nucleus doses match the MAR?]"
+                      name="Nucleus doses match the MAR?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      name="Correct vials pulled from Nucleus? (min. waste)" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Vial expiration dates checked?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Vial expiration dates checked?]"
+                      name="Vial expiration dates checked?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Wearing Gown?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Wearing Gown?]"
+                      name="Wearing Gown?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Do printed labels match MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Do printed labels match MAR?]"
+                      name="Do printed labels match MAR?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medications prepared correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medications prepared correctly?]"
+                      name="Medications prepared correctly?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Labels correctly applied to meds?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Labels correctly applied to meds?]"
+                      name="Labels correctly applied to meds?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Double Check performed correctly?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication Double Check performed correctly?]"
+                      name="Medication Double Check performed correctly?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      name="Medication further diluted correctly? (if req'd)" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      name="Dilution observed by 2nd PharmTech / Nurse?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Placed all meds in transport bag/bin?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Placed all meds in transport bag/bin?]"
+                      name="Placed all meds in transport bag/bin?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[20% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[20% Audit Nucleus completed?]"
+                      name="20% Audit Nucleus completed?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      name="Signed Daily Hood Cleaning Log?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[100% Audit Nucleus completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[100% Audit Nucleus completed?]"
+                      name="100% Audit Nucleus completed?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Signed the Eye Wash Station Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Signed the Eye Wash Station Log?]"
+                      name="Signed the Eye Wash Station Log?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Signed the Controlled Substance Log?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Signed the Controlled Substance Log?]"
+                      name="Signed the Controlled Substance Log?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Performed  deactivation hood cleaning?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[Performed  deactivation hood cleaning?]"
+                      name="Performed  deactivation hood cleaning?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[AUDITOR]"
+                      name="AUDITOR" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A DAILY TASKS AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A DAILY TASKS AUDIT?]"
+                      name="IS THIS A DAILY TASKS AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A FINAL MEDICATION PREPARATION AUDIT?]"
+                      name="IS THIS A FINAL MEDICATION PREPARATION AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A MEDICATION DOUBLE CHECK AUDIT?]"
+                      name="IS THIS A MEDICATION DOUBLE CHECK AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A MEDICATION PREPARATION AUDIT?]"
+                      name="IS THIS A MEDICATION PREPARATION AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[IS THIS A PRE-DISPENSING PREPARATION AUDIT?]"
+                      name="IS THIS A PRE-DISPENSING PREPARATION AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Get SmartSheet Clean Pharmacy\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::intRowsLoaded</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Pharmacy\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Get SmartSheet Clean Pharmacy\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Get SmartSheet Clean Pharmacy.Paths[OLE DB Source Output]"
+              endId="Package\DFT Get SmartSheet Clean Pharmacy\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Get SmartSheet Clean Pharmacy.Paths[Row Count Output 1]"
+              endId="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT Get SmartSheet Clean Pharmacy\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package End"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FE032881-249D-4D50-BB03-74F9A2A8CC1C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package End"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="EXEC uspLogPackageEnd ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageID"
+            SQLTask:DtsVariableName="User::intPackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@RowsLoaded"
+            SQLTask:DtsVariableName="User::intRowsLoaded"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{289C22E2-6491-462F-828C-4832C81C1E27}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package Start"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="DECLARE @LastLoadDateOUT DATETIME&#xA;DECLARE @PackageIDOUT INT&#xA;EXEC uspLogPackageStart   ? --BatchID&#xA;   ,?&#xA;   ,'1.0'&#xA;   ,? --[SourceDB]&#xA;   ,? --[TableName]&#xA;   ,@PackageID = @PackageIDOUT OUTPUT&#xA;   ,@LastLoadDate = @LastLoadDateOUT OUTPUT&#xA;SELECT  @PackageIDOUT AS PackageID&#xA;  ,@LastLoadDateOUT AS LastLoadDate&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="PackageID"
+            SQLTask:DtsVariableName="User::intPackageID" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LastLoadDate"
+            SQLTask:DtsVariableName="User::dtlastLoadDate" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@BatchID"
+            SQLTask:DtsVariableName="User::intBatchID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@DatabaseName"
+            SQLTask:DtsVariableName="User::strCPRPlusSourceDBName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="3" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@TableName"
+            SQLTask:DtsVariableName="User::StrSourceTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="4" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Truncate  Smartsheet Clean Pharmacy"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{B2BD8F71-B882-4A02-B12B-AF20FC52D2B1}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Truncate  Smartsheet Clean Pharmacy"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="truncate table [AONOpExStaging].[dbo].[StgSmartSheetCleanPharmacy]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{3649CFA8-68B2-4B3C-9794-92F5E2849BD4}"
+      DTS:From="Package\SQL Log Package Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL Truncate  Smartsheet Clean Pharmacy" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{1C26E269-23C7-421F-8F43-725A63D41FCA}"
+      DTS:From="Package\SQL Truncate  Smartsheet Clean Pharmacy"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT Get SmartSheet Clean Pharmacy" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{AEA163B1-ABAC-4D09-83E1-EA0EB46650D0}"
+      DTS:From="Package\DFT Get SmartSheet Clean Pharmacy"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Log Package End" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="254,42"
+          Id="Package\DFT Get SmartSheet Clean Pharmacy"
+          TopLeft="146,233" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SQL Log Package End"
+          TopLeft="166,320" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\SQL Log Package Start"
+          TopLeft="101,31" />
+        <NodeLayout
+          Size="282,42"
+          Id="Package\SQL Truncate  Smartsheet Clean Pharmacy"
+          TopLeft="125,132" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="194,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="72,59"
+              Start="0,0"
+              End="72,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="68,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="68,29.5"
+                    Point2="72,29.5"
+                    Point3="72,33.5" />
+                  <mssgle:LineSegment
+                    End="72,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="269.5,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="273,275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-16.5,45"
+              Start="0,0"
+              End="-16.5,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="-4,22.5" />
+                  <mssgle:LineSegment
+                    End="-12.5,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-12.5,22.5"
+                    Point2="-16.5,22.5"
+                    Point3="-16.5,26.5" />
+                  <mssgle:LineSegment
+                    End="-16.5,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Get SmartSheet Clean Pharmacy">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="257,42"
+          Id="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy"
+          TopLeft="55,52" />
+        <NodeLayout
+          Size="263,42"
+          Id="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy"
+          TopLeft="207,274" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\DFT Get SmartSheet Clean Pharmacy\Row Count"
+          TopLeft="166,171" />
+        <EdgeLayout
+          Id="Package\DFT Get SmartSheet Clean Pharmacy.Paths[Row Count Output 1]"
+          TopLeft="231,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="107.5,61"
+              Start="0,0"
+              End="107.5,53.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.5"
+                    Point2="0,30.5"
+                    Point3="4,30.5" />
+                  <mssgle:LineSegment
+                    End="103.5,30.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="103.5,30.5"
+                    Point2="107.5,30.5"
+                    Point3="107.5,34.5" />
+                  <mssgle:LineSegment
+                    End="107.5,53.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Get SmartSheet Clean Pharmacy.Paths[OLE DB Source Output]"
+          TopLeft="183.5,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="47.5,77"
+              Start="0,0"
+              End="47.5,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="43.5,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="43.5,38.5"
+                    Point2="47.5,38.5"
+                    Point3="47.5,42.5" />
+                  <mssgle:LineSegment
+                    End="47.5,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Get SmartSheet Clean Pharmacy\OLE SRC SmartSheet Clean Pharmacy">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Get SmartSheet Clean Pharmacy\OLE DEST SmartSheet Clean Pharmacy">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

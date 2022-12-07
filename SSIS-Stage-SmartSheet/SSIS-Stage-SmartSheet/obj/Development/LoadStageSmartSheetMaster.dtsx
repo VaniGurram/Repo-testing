@@ -1,0 +1,1038 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="4/24/2018 12:53:05 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="CORP-W-GEN-065"
+  DTS:CreatorName="FCS\ven.pwc.jstewart"
+  DTS:DTSID="{9A3BD0CD-08EF-404A-B577-C765338BCA6C}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LoadStageSmartSheetMaster"
+  DTS:PackageType="5"
+  DTS:VersionBuild="172"
+  DTS:VersionGUID="{D11C790C-60EA-4C99-96C6-D037E5F5A707}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{4E770BC3-E902-496E-BCDD-C5AEAC76FF35}"
+      DTS:ObjectName="dtManualLoadDate">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">01-01-1900</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{7A2F8CDE-7672-4123-B496-0864188BA4E5}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intBatchID"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">7,22,PipelineInitialization,18,OnPipelineRowsSent,24,OnPipelinePrePrimeOutput,25,OnPipelinePostPrimeOutput,24,OnPipelinePreEndOfRowset,25,OnPipelinePostEndOfRowset,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostPrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePreEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePrePrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="PipelineInitialization"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\SEQ SmartSheet CleanStage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{02A356BB-E40F-43FE-8062-C00B65126C8E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ SmartSheet CleanStage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetClinicClosures"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{D535612F-0171-41EE-A280-BB42B45B638D}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetClinicClosures"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanClinicClosures.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetClinicProfile"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{28CEF0BF-40C5-4F3B-9FAC-9F5481BFB952}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetClinicProfile"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanClinicProfile.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetHeadNurse"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{793806E5-8D12-4806-9E51-0465F1BFA32B}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetHeadNurse"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanHeadNurse.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetLabMA"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{B68AA32F-07DB-4D34-AD00-BFA84C2C534D}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetLabMA"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanLabMA.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetNurse"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{CF077C19-8326-41DD-B2A5-DC7672F686E2}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetNurse"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanNurse.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetOfficeManager"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{BA0B6F08-3E21-4BE8-B58A-C03BBF92BA82}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetOfficeManager"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanOfficeManager.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetPharmacy"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{35B0F282-0897-4007-9A41-D27EC926EA77}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetPharmacy"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanPharmacy.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetPharmacyContactList"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{4c78dc85-d86b-4420-91d1-ae3bbebb5047}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetPharmacyContactList"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanPharmacyMasterContactList.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetPSS"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{06A3CD8F-2A83-4DF7-9F69-5751D97713BB}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageCleanSmartSheetPSS"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageSmartSheetCleanSmartSheetPSS.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SEQ SmartSheet Stage"
+      DTS:CreationName="STOCK:SEQUENCE"
+      DTS:Description="Sequence Container"
+      DTS:DTSID="{05EAEBE1-468C-4E15-83C2-4BA2ED23B79E}"
+      DTS:ExecutableType="STOCK:SEQUENCE"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SEQ SmartSheet Stage">
+      <DTS:Variables />
+      <DTS:Executables>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStageClinicClosures"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{766A30A6-5F24-4CE1-938C-3E346B4BA451}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageClinicClosures"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageClosures.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStageClinicProfiles"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{BF1DCF23-E1E2-429C-8257-91C2DD5355D7}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageClinicProfiles"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageClinicProfile.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStageHeadNurse"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{B8BA3013-E538-4010-A91B-4E03169F1C53}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageHeadNurse"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageHeadNurse.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStageLabMA"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{7fc6c4ef-a679-4937-b8c2-2172b9f8e1de}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageLabMA"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageLabMA.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStageManager"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{312ed88a-7e37-49cc-be58-c9e362cd6fbb}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageManager"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageOfficeManager.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStageNursing"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{316a06de-17fa-46df-b340-596fba93d8d7}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStageNursing"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StageNursing.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStagePharmacy"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{DD47F629-98C0-41A1-86F8-5ADB973946F8}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStagePharmacy"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StagePharmacy.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStagePharmacyContactmasterList"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{fd07b2db-a608-4bed-871d-1aebdc744861}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStagePharmacyContactmasterList"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StagePharmacyContactMaster.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+        <DTS:Executable
+          DTS:refId="Package\SEQ SmartSheet Stage\eptStagePSS"
+          DTS:CreationName="Microsoft.ExecutePackageTask"
+          DTS:Description="Execute Package Task"
+          DTS:DTSID="{7749d6a9-0454-4cc9-9fb6-b9c6d164bdf5}"
+          DTS:ExecutableType="Microsoft.ExecutePackageTask"
+          DTS:LocaleID="-1"
+          DTS:ObjectName="eptStagePSS"
+          DTS:TaskContact="Microsoft Corporation; Microsoft SQL Server; Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+          <DTS:Variables />
+          <DTS:ObjectData>
+            <ExecutePackageTask>
+              <UseProjectReference>True</UseProjectReference>
+              <PackageName>StagePSS.dtsx</PackageName>
+              <ParameterAssignment>
+                <ParameterName>dtManualLoadDate</ParameterName>
+                <BindedVariableOrParameterName>$Package::dtManualLoadDate</BindedVariableOrParameterName>
+              </ParameterAssignment>
+              <ParameterAssignment>
+                <ParameterName>intBatchID</ParameterName>
+                <BindedVariableOrParameterName>User::intBatchID</BindedVariableOrParameterName>
+              </ParameterAssignment>
+            </ExecutePackageTask>
+          </DTS:ObjectData>
+        </DTS:Executable>
+      </DTS:Executables>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Batch End"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A333E8B0-7083-4D74-BBC0-A4CBB1416E1A}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Batch End"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="EXEC uspLogBatchEnd ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@BatchID"
+            SQLTask:DtsVariableName="User::intBatchID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="0" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Batch Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{8F79A7AD-C072-41C7-97E2-D9CF7704C600}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Batch Start"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="DECLARE @BatchIDOUT INT&#xA;EXEC uspLogBatchStart ?, '1.0', @BatchID = @BatchIDOUT OUTPUT&#xA;SELECT @BatchIDOUT as BatchID"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="BatchID"
+            SQLTask:DtsVariableName="User::intBatchID" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@BatchName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="0" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{88318763-E1ED-46A9-A40F-8B51F3525F00}"
+      DTS:From="Package\SQL Log Batch Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SEQ SmartSheet Stage" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{40F76636-D31C-4462-9C88-865E3257A098}"
+      DTS:From="Package\SEQ SmartSheet Stage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\SEQ SmartSheet CleanStage" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{86627C32-71B7-42FE-8CDA-4C3FF2E0363C}"
+      DTS:From="Package\SEQ SmartSheet CleanStage"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Log Batch End" />
+  </DTS:PrecedenceConstraints>
+  <DTS:EventHandlers>
+    <DTS:EventHandler
+      DTS:refId="Package.EventHandlers[OnWarning]"
+      DTS:CreationName="OnWarning"
+      DTS:Description="SSISOps : DON'T CHANGE PREFIX. "
+      DTS:DTSID="{AEBB98B3-05EC-44AD-A4DD-28FFA117ADCC}"
+      DTS:EventID="1302"
+      DTS:EventName="OnWarning"
+      DTS:LocaleID="-1">
+      <DTS:Variables>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="The propagate property of the event"
+          DTS:DTSID="{7AB281A1-3B95-478B-B9A8-AF3E10C7B630}"
+          DTS:IncludeInDebugDump="6789"
+          DTS:Namespace="System"
+          DTS:ObjectName="Propagate">
+          <DTS:VariableValue
+            DTS:DataType="11">-1</DTS:VariableValue>
+        </DTS:Variable>
+        <DTS:Variable
+          DTS:CreationName=""
+          DTS:Description="SSISOpsNF : DON'T CHANGE PREFIX. "
+          DTS:DTSID="{59E62F4E-3DBC-4A4B-B4BF-55D26988A6D3}"
+          DTS:IncludeInDebugDump="2345"
+          DTS:Namespace="User"
+          DTS:ObjectName="varSSISOpsNF_CHECK">
+          <DTS:VariableValue
+            DTS:DataType="8">{0B8B30CB-6F9F-45A8-A254-DB2C8D7AFAD0}</DTS:VariableValue>
+        </DTS:Variable>
+      </DTS:Variables>
+      <DTS:Executables />
+    </DTS:EventHandler>
+  </DTS:EventHandlers>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="264.8,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetClinicClosures"
+          TopLeft="10.3333333333333,12.3333333333333" />
+        <NodeLayout
+          Size="255.2,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetClinicProfile"
+          TopLeft="30.3333333333334,75.6666666666667" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetHeadNurse"
+          TopLeft="13.6666666666667,134" />
+        <NodeLayout
+          Size="232.8,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetLabMA"
+          TopLeft="37,209" />
+        <NodeLayout
+          Size="228.8,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetNurse"
+          TopLeft="47,269" />
+        <NodeLayout
+          Size="233.6,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetOfficeManager"
+          TopLeft="42,339" />
+        <NodeLayout
+          Size="192,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetPharmacy"
+          TopLeft="38.6666666666667,407.333333333333" />
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetPSS"
+          TopLeft="33,455" />
+        <NodeLayout
+          Size="219.2,41.6"
+          Id="Package\SEQ SmartSheet CleanStage\eptStageCleanSmartSheetPharmacyContactList"
+          TopLeft="28.6571511653008,520.505890707491" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="326.4,616.8"
+          Size="326.4,660"
+          Id="Package\SEQ SmartSheet CleanStage"
+          TopLeft="466.190476920329,133.333333333333" />
+        <NodeLayout
+          Size="158.4,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStageClinicClosures"
+          TopLeft="12.7222222222222,314.833333333333" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStageClinicProfiles"
+          TopLeft="16.0555555555556,366.833333333333" />
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStageHeadNurse"
+          TopLeft="10.5,54.3888888888888" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStageLabMA"
+          TopLeft="12.3888888888889,212.5" />
+        <NodeLayout
+          Size="151.2,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStageManager"
+          TopLeft="10.7222222222222,106.5" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStageNursing"
+          TopLeft="13.0555555555555,265.833333333333" />
+        <NodeLayout
+          Size="167.2,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStagePharmacy"
+          TopLeft="6.05555555555544,5.5" />
+        <NodeLayout
+          Size="148,44"
+          Id="Package\SEQ SmartSheet Stage\eptStagePSS"
+          TopLeft="13.3888888888889,160.166666666667" />
+        <NodeLayout
+          Size="156.8,41.6"
+          Id="Package\SEQ SmartSheet Stage\eptStagePharmacyContactmasterList"
+          TopLeft="34.0857164874369,435.435302311327" />
+        <ContainerLayout
+          HeaderHeight="43"
+          IsExpanded="True"
+          PanelSize="259.2,532"
+          Size="259.2,575.2"
+          Id="Package\SEQ SmartSheet Stage"
+          TopLeft="95.5555555555553,134.111111111111" />
+        <NodeLayout
+          Size="168.8,41.6"
+          Id="Package\SQL Log Batch End"
+          TopLeft="984.468254698108,471.666666666667" />
+        <NodeLayout
+          Size="176,41.6"
+          Id="Package\SQL Log Batch Start"
+          TopLeft="710.19047692033,67.222222222222" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="798.19047692033,108.822222222222">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-573.034921364775,25.288888888889"
+              Start="0,0"
+              End="-573.034921364775,17.788888888889">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,8.64444444444452" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,8.64444444444452"
+                    Point2="0,12.6444444444445"
+                    Point3="-4,12.6444444444445" />
+                  <mssgle:LineSegment
+                    End="-569.034921364775,12.6444444444445" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-569.034921364775,12.6444444444445"
+                    Point2="-573.034921364775,12.6444444444445"
+                    Point3="-573.034921364775,16.6444444444445" />
+                  <mssgle:LineSegment
+                    End="-573.034921364775,17.788888888889" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="354.755555555555,421.711111111111">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="111.434921364773,41.622222222222"
+              Start="0,0"
+              End="103.934921364773,41.622222222222">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="51.7174606823866,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="51.7174606823866,0"
+                    Point2="55.7174606823866,0"
+                    Point3="55.7174606823866,4" />
+                  <mssgle:LineSegment
+                    End="55.7174606823866,37.622222222222" />
+                  <mssgle:CubicBezierSegment
+                    Point1="55.7174606823866,37.622222222222"
+                    Point2="55.7174606823866,41.622222222222"
+                    Point3="59.7174606823866,41.622222222222" />
+                  <mssgle:LineSegment
+                    End="103.934921364773,41.622222222222" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="792.590476920328,463.333333333333">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="191.877777777779,29.133333333334"
+              Start="0,0"
+              End="184.377777777779,29.133333333334">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="91.9388888888897,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="91.9388888888897,0"
+                    Point2="95.9388888888897,0"
+                    Point3="95.9388888888897,4" />
+                  <mssgle:LineSegment
+                    End="95.9388888888897,25.133333333334" />
+                  <mssgle:CubicBezierSegment
+                    Point1="95.9388888888897,25.133333333334"
+                    Point2="95.9388888888897,29.133333333334"
+                    Point3="99.9388888888897,29.133333333334" />
+                  <mssgle:LineSegment
+                    End="184.377777777779,29.133333333334" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <DtsEventHandler
+    design-time-name="Package.EventHandlers[OnWarning]">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="{19524E59-C1C8-4AC2-9FA6-660173CAEB40}"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="{36042D02-9A27-47C4-AD68-1F2FDC03D5B0}"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="{D90C9798-0198-47B7-8AF3-1FE0DBE3AEC3}"
+          TopLeft="NaN,NaN" />
+        <NodeLayout
+          Size="NaN,NaN"
+          Id="{39F967C9-10DE-4823-9143-D2C193B4F238}"
+          TopLeft="NaN,NaN" />
+        <EdgeLayout
+          Id="{3CE59789-8E00-42F7-8EB3-A3A728E450CA}"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="{42209F68-2623-4438-A595-FAF63C4A96C5}"
+          TopLeft="NaN,NaN">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="{assembly:Null}"
+              Start="0,0"
+              End="0,0">
+              <mssgle:Curve.Segments>
+                <assembly:Null />
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="0,0,0,0"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </DtsEventHandler>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

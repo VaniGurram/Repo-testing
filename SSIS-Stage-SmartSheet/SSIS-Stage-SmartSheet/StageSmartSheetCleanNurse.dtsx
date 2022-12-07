@@ -1,0 +1,2015 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/21/2019 9:34:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-BIS-SQL-01T"
+  DTS:CreatorName="FCS\vani.gurram.FCS"
+  DTS:DTSID="{75C03125-9CDF-4F84-BB93-A797F55E1EF3}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StageSmartSheetCleanNurse"
+  DTS:PackageType="5"
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{D939E83B-AC92-4E8B-AB4C-370C9B78EC72}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{4A38B987-4B40-4AD4-B441-D27B198FC59F}"
+      DTS:ObjectName="dtManualLoadDate">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{A39D8FFC-4F64-44F9-B286-12681D6ECCC3}"
+      DTS:ObjectName="intBatchID">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CC72C15B-2C74-489D-BF51-214D68911ED5}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::dtStatusChangedDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCreateDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/1/2019 12:56:09 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{1AAB90AF-2DF5-47C0-A7EA-B91EB1937B11}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtlastLoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">8/21/2019 10:41:14 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{78BE1754-F081-456A-99E7-FC9CB2F7745F}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::dtStatusChangedDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtStatusChangeDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/1/2019 12:56:09 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{740D9612-DEEE-46EB-A52B-33669DEAFBF8}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::intBatchID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="intBatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{DA241A36-51BB-4761-ABB8-A9CE2E7BA02F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intPackageID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{9FB7C4BF-B72F-48B5-A3C1-7331C21D31CF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intRowsLoaded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{01AEF236-2272-4CFC-8631-3CD5270E749D}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::StringOpExStage]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strCPRPlusSourceDBName">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=AZC-BIS-SQL-002;Initial Catalog=AONOpExStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{032AC15B-044B-4647-9661-90D0E8D00EF6}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Stage SmartSheet Clean Nurse&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StrSourceTableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Stage SmartSheet Clean Nurse</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Get SmartSheet Clean Nurse"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{0079785F-CA58-4FC1-8FCE-4CA0F9693C89}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Get SmartSheet Clean Nurse"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DEST SmartSheet Clean Nurse"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[StgSmartSheetCleanNurse]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Connections[OleDbConnection]"
+                  connectionManagerID="{994E1584-413C-4FA6-8938-4B6DA199F080}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i8"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Created]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Clinic Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Clinic Name"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Clinic Name]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Pt ID Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt ID Correct"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt ID Correct]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt ID Correct]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Pre Treatment Documentation Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pre Treatment Documentation Correct"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pre Treatment Documentation Correct]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pre Treatment Documentation Correct]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[TOM Double Check Correct - Part 1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TOM Double Check Correct - Part 1"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[TOM Double Check Correct - Part 1]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[TOM Double Check Correct - Part 1]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[TOM Double Check Correct - Part 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="TOM Double Check Correct - Part 2"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[TOM Double Check Correct - Part 2]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[TOM Double Check Correct - Part 2]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Informed Consent Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Informed Consent Correct"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Informed Consent Correct]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Informed Consent Correct]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Reviewed Pts Tx Screen 1?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Reviewed Pts Tx Screen 1?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Reviewed Pts Tx Screen 1?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Reviewed Pts Tx Screen 1?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Pt asked to state their first &amp; last name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their first &amp; last name"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt asked to state their first &amp; last name]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Pt asked to state their DOB]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their DOB"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Pt wristband confirmed]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt wristband confirmed"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt wristband confirmed]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt wristband confirmed]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Was pre-Tx patient assessment completed?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Was pre-Tx patient assessment completed?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Was pre-Tx patient assessment completed?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Was pre-Tx patient assessment completed?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Pre-Tx assessment documented?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pre-Tx assessment documented?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pre-Tx assessment documented?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pre-Tx assessment documented?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Reviewed Order Screen?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Reviewed Order Screen?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Reviewed Order Screen?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Reviewed Order Screen?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Organize or review MAR documentation 1]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Organize or review MAR documentation 1"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Organize or review MAR documentation 1]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Organize or review MAR documentation 1]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Document first double check]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Document first double check"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Document first double check]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Document first double check]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Checked treatment plan 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Checked treatment plan 2"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Checked treatment plan 2]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Checked treatment plan 2]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Checked Orders 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Checked Orders 2"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Checked Orders 2]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Checked Orders 2]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Organize or review MAR documentation 2]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Organize or review MAR documentation 2"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Organize or review MAR documentation 2]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Organize or review MAR documentation 2]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Document second double check]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Document second double check"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Document second double check]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Document second double check]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Informed consent in documents]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Informed consent in documents"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Informed consent in documents]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Informed consent in documents]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[# of missing consents]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="# of missing consents"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[# of missing consents]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[# of missing consents]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[AUDITOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="AUDITOR"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[AUDITOR]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Did the nurse ensure Pt. Ed. was provided?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Did the nurse ensure Pt. Ed. was provided?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Did the nurse ensure Pt. Ed. was provided?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Did the nurse ensure Pt. Ed. was provided?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Drug label(s) confirmed with MAR?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Drug label(s) confirmed with MAR?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Drug label(s) confirmed with MAR?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drug label(s) confirmed with MAR?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Drug labels confirmed with pt.?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Drug labels confirmed with pt.?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Drug labels confirmed with pt.?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drug labels confirmed with pt.?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Drugs confirmed with pt. immediately b4 giving?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Drugs confirmed with pt. immediately b4 giving?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Drugs confirmed with pt. immediately b4 giving?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drugs confirmed with pt. immediately b4 giving?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[IS THIS A 1ST TIME TREATMENT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A 1ST TIME TREATMENT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A 1ST TIME TREATMENT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 1ST TIME TREATMENT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A 1st TOM DOUBLE CHECK AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A 2nd TOM DOUBLE CHECK AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A DAILY OR A WEEKLY AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A PATIENT IDENTIFICATION AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A PATIENT IDENTIFICATION AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A PRE-TX QUESTIONNAIRE AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].Columns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Obtained Informed Consent for Cycle 1 Day 1 Tx.?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt ID Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt ID Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pre Treatment Documentation Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pre Treatment Documentation Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[TOM Double Check Correct - Part 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TOM Double Check Correct - Part 1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[TOM Double Check Correct - Part 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TOM Double Check Correct - Part 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Informed Consent Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Informed Consent Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Reviewed Pts Tx Screen 1?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Reviewed Pts Tx Screen 1?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first &amp; last name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pt wristband confirmed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt wristband confirmed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Was pre-Tx patient assessment completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Was pre-Tx patient assessment completed?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Pre-Tx assessment documented?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pre-Tx assessment documented?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Reviewed Order Screen?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Reviewed Order Screen?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Organize or review MAR documentation 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Organize or review MAR documentation 1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Document first double check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Document first double check" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Checked treatment plan 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Checked treatment plan 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Checked Orders 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Checked Orders 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Organize or review MAR documentation 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Organize or review MAR documentation 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Document second double check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Document second double check" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Informed consent in documents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Informed consent in documents" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[# of missing consents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="# of missing consents" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[LoadDate]"
+                      dataType="dbTimeStamp"
+                      name="LoadDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Did the nurse ensure Pt. Ed. was provided?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Did the nurse ensure Pt. Ed. was provided?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Drug label(s) confirmed with MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Drug label(s) confirmed with MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Drug labels confirmed with pt.?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Drug labels confirmed with pt.?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Drugs confirmed with pt. immediately b4 giving?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Drugs confirmed with pt. immediately b4 giving?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A 1ST TIME TREATMENT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A 1ST TIME TREATMENT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A 1st TOM DOUBLE CHECK AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A 2nd TOM DOUBLE CHECK AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A PATIENT IDENTIFICATION AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A PRE-TX QUESTIONNAIRE AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input].ExternalColumns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Obtained Informed Consent for Cycle 1 Day 1 Tx.?" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE SRC SmartSheet Clean Nurse"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">exec [usp_SmartSheetNurse] 'I'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::StrSourceQuery</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Connections[OleDbConnection]"
+                  connectionManagerID="{994E1584-413C-4FA6-8938-4B6DA199F080}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Created]"
+                      name="Created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      name="Clinic Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt ID Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt ID Correct]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt ID Correct]"
+                      name="Pt ID Correct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pre Treatment Documentation Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pre Treatment Documentation Correct]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pre Treatment Documentation Correct]"
+                      name="Pre Treatment Documentation Correct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[TOM Double Check Correct - Part 1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[TOM Double Check Correct - Part 1]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[TOM Double Check Correct - Part 1]"
+                      name="TOM Double Check Correct - Part 1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[TOM Double Check Correct - Part 2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[TOM Double Check Correct - Part 2]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[TOM Double Check Correct - Part 2]"
+                      name="TOM Double Check Correct - Part 2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Informed Consent Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Informed Consent Correct]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Informed Consent Correct]"
+                      name="Informed Consent Correct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Reviewed Pts Tx Screen 1?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Reviewed Pts Tx Screen 1?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Reviewed Pts Tx Screen 1?]"
+                      name="Reviewed Pts Tx Screen 1?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt asked to state their first &amp; last name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their first &amp; last name]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt asked to state their first &amp; last name]"
+                      name="Pt asked to state their first &amp; last name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their DOB]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB]"
+                      name="Pt asked to state their DOB"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt wristband confirmed]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt wristband confirmed]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pt wristband confirmed]"
+                      name="Pt wristband confirmed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Was pre-Tx patient assessment completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Was pre-Tx patient assessment completed?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Was pre-Tx patient assessment completed?]"
+                      name="Was pre-Tx patient assessment completed?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pre-Tx assessment documented?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pre-Tx assessment documented?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Pre-Tx assessment documented?]"
+                      name="Pre-Tx assessment documented?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Reviewed Order Screen?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Reviewed Order Screen?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Reviewed Order Screen?]"
+                      name="Reviewed Order Screen?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Organize or review MAR documentation 1]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Organize or review MAR documentation 1]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Organize or review MAR documentation 1]"
+                      name="Organize or review MAR documentation 1"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Document first double check]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Document first double check]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Document first double check]"
+                      name="Document first double check"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Checked treatment plan 2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Checked treatment plan 2]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Checked treatment plan 2]"
+                      name="Checked treatment plan 2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Checked Orders 2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Checked Orders 2]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Checked Orders 2]"
+                      name="Checked Orders 2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Organize or review MAR documentation 2]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Organize or review MAR documentation 2]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Organize or review MAR documentation 2]"
+                      name="Organize or review MAR documentation 2"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Document second double check]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Document second double check]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Document second double check]"
+                      name="Document second double check"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Informed consent in documents]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Informed consent in documents]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Informed consent in documents]"
+                      name="Informed consent in documents"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[# of missing consents]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[# of missing consents]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[# of missing consents]"
+                      name="# of missing consents"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR]"
+                      length="250"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[AUDITOR]"
+                      name="AUDITOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Did the nurse ensure Pt. Ed. was provided?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Did the nurse ensure Pt. Ed. was provided?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Did the nurse ensure Pt. Ed. was provided?]"
+                      name="Did the nurse ensure Pt. Ed. was provided?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drug label(s) confirmed with MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Drug label(s) confirmed with MAR?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drug label(s) confirmed with MAR?]"
+                      name="Drug label(s) confirmed with MAR?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drug labels confirmed with pt.?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Drug labels confirmed with pt.?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drug labels confirmed with pt.?]"
+                      name="Drug labels confirmed with pt.?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drugs confirmed with pt. immediately b4 giving?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Drugs confirmed with pt. immediately b4 giving?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Drugs confirmed with pt. immediately b4 giving?]"
+                      name="Drugs confirmed with pt. immediately b4 giving?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 1ST TIME TREATMENT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A 1ST TIME TREATMENT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 1ST TIME TREATMENT?]"
+                      name="IS THIS A 1ST TIME TREATMENT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      name="IS THIS A 1st TOM DOUBLE CHECK AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      name="IS THIS A 2nd TOM DOUBLE CHECK AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      name="IS THIS A PATIENT IDENTIFICATION AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      name="IS THIS A PRE-TX QUESTIONNAIRE AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].Columns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      name="Obtained Informed Consent for Cycle 1 Day 1 Tx.?"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt ID Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt ID Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pre Treatment Documentation Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pre Treatment Documentation Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[TOM Double Check Correct - Part 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TOM Double Check Correct - Part 1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[TOM Double Check Correct - Part 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="TOM Double Check Correct - Part 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Informed Consent Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Informed Consent Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Reviewed Pts Tx Screen 1?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Reviewed Pts Tx Screen 1?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their first &amp; last name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first &amp; last name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pt wristband confirmed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt wristband confirmed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Was pre-Tx patient assessment completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Was pre-Tx patient assessment completed?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Pre-Tx assessment documented?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pre-Tx assessment documented?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Reviewed Order Screen?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Reviewed Order Screen?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Organize or review MAR documentation 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Organize or review MAR documentation 1" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Document first double check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Document first double check" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Checked treatment plan 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Checked treatment plan 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Checked Orders 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Checked Orders 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Organize or review MAR documentation 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Organize or review MAR documentation 2" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Document second double check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Document second double check" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Informed consent in documents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Informed consent in documents" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[# of missing consents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="# of missing consents" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Did the nurse ensure Pt. Ed. was provided?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Did the nurse ensure Pt. Ed. was provided?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Drug label(s) confirmed with MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Drug label(s) confirmed with MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Drug labels confirmed with pt.?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Drug labels confirmed with pt.?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Drugs confirmed with pt. immediately b4 giving?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Drugs confirmed with pt. immediately b4 giving?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A 1ST TIME TREATMENT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A 1ST TIME TREATMENT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A 1st TOM DOUBLE CHECK AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A 2nd TOM DOUBLE CHECK AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A PATIENT IDENTIFICATION AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A PRE-TX QUESTIONNAIRE AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output].ExternalColumns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Obtained Informed Consent for Cycle 1 Day 1 Tx.?" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i8"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt ID Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt ID Correct]"
+                      name="Pt ID Correct" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pre Treatment Documentation Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pre Treatment Documentation Correct]"
+                      name="Pre Treatment Documentation Correct" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[TOM Double Check Correct - Part 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[TOM Double Check Correct - Part 1]"
+                      name="TOM Double Check Correct - Part 1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[TOM Double Check Correct - Part 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[TOM Double Check Correct - Part 2]"
+                      name="TOM Double Check Correct - Part 2" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Informed Consent Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Informed Consent Correct]"
+                      name="Informed Consent Correct" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Reviewed Pts Tx Screen 1?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Reviewed Pts Tx Screen 1?]"
+                      name="Reviewed Pts Tx Screen 1?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their first &amp; last name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their first &amp; last name]"
+                      name="Pt asked to state their first &amp; last name" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their DOB]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their DOB]"
+                      name="Pt asked to state their DOB" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt wristband confirmed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pt wristband confirmed]"
+                      name="Pt wristband confirmed" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Was pre-Tx patient assessment completed?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Was pre-Tx patient assessment completed?]"
+                      name="Was pre-Tx patient assessment completed?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pre-Tx assessment documented?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Pre-Tx assessment documented?]"
+                      name="Pre-Tx assessment documented?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Reviewed Order Screen?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Reviewed Order Screen?]"
+                      name="Reviewed Order Screen?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Organize or review MAR documentation 1]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Organize or review MAR documentation 1]"
+                      name="Organize or review MAR documentation 1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Document first double check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Document first double check]"
+                      name="Document first double check" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Checked treatment plan 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Checked treatment plan 2]"
+                      name="Checked treatment plan 2" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Checked Orders 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Checked Orders 2]"
+                      name="Checked Orders 2" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Organize or review MAR documentation 2]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Organize or review MAR documentation 2]"
+                      name="Organize or review MAR documentation 2" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Document second double check]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Document second double check]"
+                      name="Document second double check" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Informed consent in documents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Informed consent in documents]"
+                      name="Informed consent in documents" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[# of missing consents]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[# of missing consents]"
+                      name="# of missing consents" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[AUDITOR]"
+                      name="AUDITOR" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Did the nurse ensure Pt. Ed. was provided?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Did the nurse ensure Pt. Ed. was provided?]"
+                      name="Did the nurse ensure Pt. Ed. was provided?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Drug label(s) confirmed with MAR?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Drug label(s) confirmed with MAR?]"
+                      name="Drug label(s) confirmed with MAR?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Drug labels confirmed with pt.?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Drug labels confirmed with pt.?]"
+                      name="Drug labels confirmed with pt.?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Drugs confirmed with pt. immediately b4 giving?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Drugs confirmed with pt. immediately b4 giving?]"
+                      name="Drugs confirmed with pt. immediately b4 giving?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A 1ST TIME TREATMENT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A 1ST TIME TREATMENT?]"
+                      name="IS THIS A 1ST TIME TREATMENT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A 1st TOM DOUBLE CHECK AUDIT?]"
+                      name="IS THIS A 1st TOM DOUBLE CHECK AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A 2nd TOM DOUBLE CHECK AUDIT?]"
+                      name="IS THIS A 2nd TOM DOUBLE CHECK AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A DAILY OR A WEEKLY AUDIT?]"
+                      name="IS THIS A DAILY OR A WEEKLY AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A PATIENT IDENTIFICATION AUDIT?]"
+                      name="IS THIS A PATIENT IDENTIFICATION AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[IS THIS A PRE-TX QUESTIONNAIRE AUDIT?]"
+                      name="IS THIS A PRE-TX QUESTIONNAIRE AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[Obtained Informed Consent for Cycle 1 Day 1 Tx.?]"
+                      name="Obtained Informed Consent for Cycle 1 Day 1 Tx.?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Get SmartSheet Clean Nurse\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::intRowsLoaded</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Get SmartSheet Clean Nurse\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean Nurse\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Get SmartSheet Clean Nurse\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Get SmartSheet Clean Nurse.Paths[OLE DB Source Output]"
+              endId="Package\DFT Get SmartSheet Clean Nurse\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Get SmartSheet Clean Nurse.Paths[Row Count Output 1]"
+              endId="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT Get SmartSheet Clean Nurse\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package End"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D1F62C9A-A2E4-49F6-B45C-F65F08EF3460}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package End"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="EXEC uspLogPackageEnd ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageID"
+            SQLTask:DtsVariableName="User::intPackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@RowsLoaded"
+            SQLTask:DtsVariableName="User::intRowsLoaded"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C587B440-6413-47CA-9B5E-6EA4217175A8}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package Start"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="DECLARE @LastLoadDateOUT DATETIME&#xA;DECLARE @PackageIDOUT INT&#xA;EXEC uspLogPackageStart   ? --BatchID&#xA;   ,?&#xA;   ,'1.0'&#xA;   ,? --[SourceDB]&#xA;   ,? --[TableName]&#xA;   ,@PackageID = @PackageIDOUT OUTPUT&#xA;   ,@LastLoadDate = @LastLoadDateOUT OUTPUT&#xA;SELECT  @PackageIDOUT AS PackageID&#xA;  ,@LastLoadDateOUT AS LastLoadDate&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="PackageID"
+            SQLTask:DtsVariableName="User::intPackageID" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LastLoadDate"
+            SQLTask:DtsVariableName="User::dtlastLoadDate" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@BatchID"
+            SQLTask:DtsVariableName="User::intBatchID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@DatabaseName"
+            SQLTask:DtsVariableName="User::strCPRPlusSourceDBName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="3" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@TableName"
+            SQLTask:DtsVariableName="User::StrSourceTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="4" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Truncate  Smartsheet Clean Nurse"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{06167CDA-621D-47AF-9367-14E6ABD771E3}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Truncate  Smartsheet Clean Nurse"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="truncate table [AONOpExStaging].[dbo].[StgSmartSheetCleanNurse]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CF47C18E-CABC-4660-8982-E29BFA569AC6}"
+      DTS:From="Package\SQL Log Package Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL Truncate  Smartsheet Clean Nurse" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{056C6A88-90F6-46A3-8EFE-229BA5691EF8}"
+      DTS:From="Package\SQL Truncate  Smartsheet Clean Nurse"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT Get SmartSheet Clean Nurse" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{26FA77D7-BFF6-4728-952D-41DF6AA64848}"
+      DTS:From="Package\DFT Get SmartSheet Clean Nurse"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Log Package End" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="236,42"
+          Id="Package\DFT Get SmartSheet Clean Nurse"
+          TopLeft="146,233" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SQL Log Package End"
+          TopLeft="166,320" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\SQL Log Package Start"
+          TopLeft="101,31" />
+        <NodeLayout
+          Size="263,42"
+          Id="Package\SQL Truncate  Smartsheet Clean Nurse"
+          TopLeft="125,132" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="194,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="62.5,59"
+              Start="0,0"
+              End="62.5,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="58.5,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="58.5,29.5"
+                    Point2="62.5,29.5"
+                    Point3="62.5,33.5" />
+                  <mssgle:LineSegment
+                    End="62.5,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="260.25,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="260.25,275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,45"
+              Start="0,0"
+              End="0,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Get SmartSheet Clean Nurse">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="238,42"
+          Id="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse"
+          TopLeft="55,52" />
+        <NodeLayout
+          Size="244,42"
+          Id="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse"
+          TopLeft="106,302" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\DFT Get SmartSheet Clean Nurse\Row Count"
+          TopLeft="166,171" />
+        <EdgeLayout
+          Id="Package\DFT Get SmartSheet Clean Nurse.Paths[Row Count Output 1]"
+          TopLeft="229.5,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,89"
+              Start="0,0"
+              End="0,81.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,81.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Get SmartSheet Clean Nurse.Paths[OLE DB Source Output]"
+          TopLeft="174,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="57,77"
+              Start="0,0"
+              End="57,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="53,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="53,38.5"
+                    Point2="57,38.5"
+                    Point3="57,42.5" />
+                  <mssgle:LineSegment
+                    End="57,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Get SmartSheet Clean Nurse\OLE SRC SmartSheet Clean Nurse">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Get SmartSheet Clean Nurse\OLE DEST SmartSheet Clean Nurse">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

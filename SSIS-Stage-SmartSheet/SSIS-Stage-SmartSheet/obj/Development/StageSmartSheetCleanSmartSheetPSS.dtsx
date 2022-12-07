@@ -1,0 +1,1654 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="8/21/2019 9:34:18 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-BIS-SQL-01T"
+  DTS:CreatorName="FCS\vani.gurram.FCS"
+  DTS:DTSID="{0B4BEE42-F59A-4E58-BB2B-013E7E26BCD8}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="StageSmartSheetCleanSmartSheetPSS"
+  DTS:PackageType="5"
+  DTS:VersionBuild="36"
+  DTS:VersionGUID="{A8AA905B-F964-43CE-B229-283FE5EF045C}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{4A104BCD-6EA0-4EF8-99D0-D9D0B78AE341}"
+      DTS:ObjectName="dtManualLoadDate">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue"
+        xml:space="preserve"></DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{32E6B806-3D38-4DC2-ADEB-9F73AD825AD5}"
+      DTS:ObjectName="intBatchID">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{3439E676-6FD1-48B8-B70E-4E7B6DAEBD31}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::dtStatusChangedDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtCreateDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/1/2019 12:56:09 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{04A495A4-7933-44D0-91FB-8392AEFAFADF}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtlastLoadDate">
+      <DTS:VariableValue
+        DTS:DataType="7">8/21/2019 10:41:14 PM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{5EAB3EE5-2F7A-4060-9042-1575BF621EAF}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::dtStatusChangedDate]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="dtStatusChangeDate">
+      <DTS:VariableValue
+        DTS:DataType="7">10/1/2019 12:56:09 AM</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{0401962D-D710-4D47-8AEE-B52D8DC9B114}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Package::intBatchID]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="intBatchID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{8DAD9284-F016-4A7D-94FC-CF11F6234B7A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intPackageID">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{096E6CEE-8513-4F8A-B297-46A72D03687F}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="intRowsLoaded">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{30151665-F704-454F-A4B1-33269E550AD1}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="@[$Project::StringOpExStage]"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="strCPRPlusSourceDBName">
+      <DTS:VariableValue
+        DTS:DataType="8">Data Source=AZC-BIS-SQL-002;Initial Catalog=AONOpExStaging;Provider=SQLNCLI11.1;Integrated Security=SSPI;Auto Translate=False;</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{C6B8FE2F-E70E-4014-B23D-B87C404CDDCD}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Stage SmartSheet Clean PSS&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="StrSourceTableName">
+      <DTS:VariableValue
+        DTS:DataType="8">Stage SmartSheet Clean PSS</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Get SmartSheet Clean SmartSheetPSS"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FC4C730D-971B-4D18-B5E5-35562BC482E8}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Get SmartSheet Clean SmartSheetPSS"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DEST SmartSheet Clean SmartSheetPSS"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[StgSmartSheetCleanSmartSheetPSS]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Connections[OleDbConnection]"
+                  connectionManagerID="{994E1584-413C-4FA6-8938-4B6DA199F080}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i8"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Created]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Clinic Name]"
+                      cachedDataType="wstr"
+                      cachedLength="500"
+                      cachedName="Clinic Name"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Clinic Name]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Check In Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Check In Correct"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Check In Correct]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Check In Correct]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Check Out Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Check Out Correct"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Check Out Correct]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Check Out Correct]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[New Patient Paperwork Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="New Patient Paperwork Correct"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[New Patient Paperwork Correct]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[New Patient Paperwork Correct]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[No Show Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="No Show Correct"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[No Show Correct]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[No Show Correct]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their first &amp; last name PSS IN"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their first &amp; last name PSS IN]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Pt asked to state their DOB PSS IN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their DOB PSS IN"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB PSS IN]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Confirm patient is enrolled in CareSpace]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Confirm patient is enrolled in CareSpace"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Confirm patient is enrolled in CareSpace]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Review electronic AR &amp; patient payment amts]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Review electronic AR &amp; patient payment amts"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Review electronic AR &amp; patient payment amts]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their first  &amp; last name PSS OUT"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS OUT]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Pt asked to state their DOB PSS OUT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Pt asked to state their DOB PSS OUT"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB PSS OUT]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Review and schedule current day's orders]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Review and schedule current day's orders"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Review and schedule current day's orders]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Review and schedule current day's orders]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="If pt, in-house  scan give Rad. disclosure &amp; prep"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[If pt, in-house scan give Rad. disclosure &amp; prep]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Depart patient at check-out]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Depart patient at check-out"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Depart patient at check-out]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Depart patient at check-out]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt First Name, Last Name, DOB, Sex, &amp; PCP info."
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Insurance Carrier, Insurance ID, Group #"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Insurance Carrier, Insurance ID, Group #]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[No Show Report Follow-Up]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="No Show Report Follow-Up"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[No Show Report Follow-Up]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[No Show Report Follow-Up]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[PSS Follow-up Comments]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PSS Follow-up Comments"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[PSS Follow-up Comments]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[PSS Follow-up Comments]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[AUDITOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="AUDITOR"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[AUDITOR]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[IS THIS A CHECK-IN AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A CHECK-IN AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A CHECK-IN AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A CHECK-IN AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[IS THIS A CHECK-OUT AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A CHECK-OUT AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A CHECK-OUT AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A CHECK-OUT AUDIT?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[Is this a Daily Audit or Weekly Audit?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Is this a Daily Audit or Weekly Audit?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Is this a Daily Audit or Weekly Audit?]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Is this a Daily Audit or Weekly Audit?]" />
+                    <inputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].Columns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="IS THIS A NEW PATIENT PAPERWORK AUDIT?"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="500"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Check In Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Check In Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Check Out Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Check Out Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[New Patient Paperwork Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="New Patient Paperwork Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[No Show Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="No Show Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first &amp; last name PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirm patient is enrolled in CareSpace" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review electronic AR &amp; patient payment amts" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first &amp; last name PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Review and schedule current day's orders]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review and schedule current day's orders" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[If pt, in-house scan give Rad. disclosure &amp; prep]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="If pt, in-house scan give Rad. disclosure &amp; prep" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Depart patient at check-out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Depart patient at check-out" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info." />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Insurance Carrier, Insurance ID, Group #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[No Show Report Follow-Up]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="No Show Report Follow-Up" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[PSS Follow-up Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PSS Follow-up Comments" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[LoadDate]"
+                      dataType="dbTimeStamp"
+                      name="LoadDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A CHECK-IN AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A CHECK-IN AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A CHECK-OUT AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A CHECK-OUT AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[Is this a Daily Audit or Weekly Audit?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Is this a Daily Audit or Weekly Audit?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input].ExternalColumns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A NEW PATIENT PAPERWORK AUDIT?" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE SRC SmartSheet Clean SmartSheetPSS"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">exec [usp_SmartSheetPSS] 'I'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable">User::StrSourceQuery</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Connections[OleDbConnection]"
+                  connectionManagerID="{994E1584-413C-4FA6-8938-4B6DA199F080}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Created]"
+                      name="Created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      length="500"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      name="Clinic Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Check In Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Check In Correct]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Check In Correct]"
+                      name="Check In Correct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Check Out Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Check Out Correct]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Check Out Correct]"
+                      name="Check Out Correct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[New Patient Paperwork Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[New Patient Paperwork Correct]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[New Patient Paperwork Correct]"
+                      name="New Patient Paperwork Correct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[No Show Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[No Show Correct]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[No Show Correct]"
+                      name="No Show Correct"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      name="Pt asked to state their first &amp; last name PSS IN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB PSS IN]"
+                      name="Pt asked to state their DOB PSS IN"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      name="Confirm patient is enrolled in CareSpace"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      name="Review electronic AR &amp; patient payment amts"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      name="Pt asked to state their DOB PSS OUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Review and schedule current day's orders]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Review and schedule current day's orders]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Review and schedule current day's orders]"
+                      name="Review and schedule current day's orders"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Depart patient at check-out]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Depart patient at check-out]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Depart patient at check-out]"
+                      name="Depart patient at check-out"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info."
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      name="Insurance Carrier, Insurance ID, Group #"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[No Show Report Follow-Up]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[No Show Report Follow-Up]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[No Show Report Follow-Up]"
+                      name="No Show Report Follow-Up"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[PSS Follow-up Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[PSS Follow-up Comments]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[PSS Follow-up Comments]"
+                      name="PSS Follow-up Comments"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR]"
+                      length="200"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[AUDITOR]"
+                      name="AUDITOR"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      name="Pt asked to state their first  &amp; last name PSS OUT"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      name="If pt, in-house  scan give Rad. disclosure &amp; prep"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A CHECK-IN AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A CHECK-IN AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A CHECK-IN AUDIT?]"
+                      name="IS THIS A CHECK-IN AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A CHECK-OUT AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A CHECK-OUT AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A CHECK-OUT AUDIT?]"
+                      name="IS THIS A CHECK-OUT AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Is this a Daily Audit or Weekly Audit?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Is this a Daily Audit or Weekly Audit?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[Is this a Daily Audit or Weekly Audit?]"
+                      name="Is this a Daily Audit or Weekly Audit?"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].Columns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      name="IS THIS A NEW PATIENT PAPERWORK AUDIT?"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="500"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Check In Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Check In Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Check Out Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Check Out Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[New Patient Paperwork Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="New Patient Paperwork Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[No Show Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="No Show Correct" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first &amp; last name PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirm patient is enrolled in CareSpace" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review electronic AR &amp; patient payment amts" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Review and schedule current day's orders]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review and schedule current day's orders" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Depart patient at check-out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Depart patient at check-out" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info." />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Insurance Carrier, Insurance ID, Group #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[No Show Report Follow-Up]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="No Show Report Follow-Up" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[PSS Follow-up Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PSS Follow-up Comments" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first  &amp; last name PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="If pt, in-house  scan give Rad. disclosure &amp; prep" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A CHECK-IN AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A CHECK-IN AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A CHECK-OUT AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A CHECK-OUT AUDIT?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[Is this a Daily Audit or Weekly Audit?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Is this a Daily Audit or Weekly Audit?" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output].ExternalColumns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="IS THIS A NEW PATIENT PAPERWORK AUDIT?" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i8"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      dataType="wstr"
+                      length="500"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Check In Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Check In Correct]"
+                      name="Check In Correct" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Check Out Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Check Out Correct]"
+                      name="Check Out Correct" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[New Patient Paperwork Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[New Patient Paperwork Correct]"
+                      name="New Patient Paperwork Correct" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[No Show Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[No Show Correct]"
+                      name="No Show Correct" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      name="Pt asked to state their first &amp; last name PSS IN" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their DOB PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their DOB PSS IN]"
+                      name="Pt asked to state their DOB PSS IN" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      name="Confirm patient is enrolled in CareSpace" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      name="Review electronic AR &amp; patient payment amts" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      name="Pt asked to state their first  &amp; last name PSS OUT" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      name="Pt asked to state their DOB PSS OUT" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Review and schedule current day's orders]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Review and schedule current day's orders]"
+                      name="Review and schedule current day's orders" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      name="If pt, in-house  scan give Rad. disclosure &amp; prep" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Depart patient at check-out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Depart patient at check-out]"
+                      name="Depart patient at check-out" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info." />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      name="Insurance Carrier, Insurance ID, Group #" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[No Show Report Follow-Up]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[No Show Report Follow-Up]"
+                      name="No Show Report Follow-Up" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[PSS Follow-up Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[PSS Follow-up Comments]"
+                      name="PSS Follow-up Comments" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[AUDITOR]"
+                      name="AUDITOR" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[IS THIS A CHECK-IN AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[IS THIS A CHECK-IN AUDIT?]"
+                      name="IS THIS A CHECK-IN AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[IS THIS A CHECK-OUT AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[IS THIS A CHECK-OUT AUDIT?]"
+                      name="IS THIS A CHECK-OUT AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Is this a Daily Audit or Weekly Audit?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[Is this a Daily Audit or Weekly Audit?]"
+                      name="Is this a Daily Audit or Weekly Audit?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[IS THIS A NEW PATIENT PAPERWORK AUDIT?]"
+                      name="IS THIS A NEW PATIENT PAPERWORK AUDIT?" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::intRowsLoaded</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Get SmartSheet Clean SmartSheetPSS\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Get SmartSheet Clean SmartSheetPSS\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Get SmartSheet Clean SmartSheetPSS.Paths[OLE DB Source Output]"
+              endId="Package\DFT Get SmartSheet Clean SmartSheetPSS\Row Count.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Get SmartSheet Clean SmartSheetPSS.Paths[Row Count Output 1]"
+              endId="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT Get SmartSheet Clean SmartSheetPSS\Row Count.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package End"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{29F767D7-6FD8-4592-8606-BDDE5D682D10}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package End"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="EXEC uspLogPackageEnd ?, ?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageID"
+            SQLTask:DtsVariableName="User::intPackageID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@RowsLoaded"
+            SQLTask:DtsVariableName="User::intRowsLoaded"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{2B14E6F4-607A-47AC-A181-7937C8EDC69D}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package Start"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="DECLARE @LastLoadDateOUT DATETIME&#xA;DECLARE @PackageIDOUT INT&#xA;EXEC uspLogPackageStart   ? --BatchID&#xA;   ,?&#xA;   ,'1.0'&#xA;   ,? --[SourceDB]&#xA;   ,? --[TableName]&#xA;   ,@PackageID = @PackageIDOUT OUTPUT&#xA;   ,@LastLoadDate = @LastLoadDateOUT OUTPUT&#xA;SELECT  @PackageIDOUT AS PackageID&#xA;  ,@LastLoadDateOUT AS LastLoadDate&#xA;"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="PackageID"
+            SQLTask:DtsVariableName="User::intPackageID" />
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="LastLoadDate"
+            SQLTask:DtsVariableName="User::dtlastLoadDate" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@BatchID"
+            SQLTask:DtsVariableName="User::intBatchID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="0" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@PackageName"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@DatabaseName"
+            SQLTask:DtsVariableName="User::strCPRPlusSourceDBName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="3" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="@TableName"
+            SQLTask:DtsVariableName="User::StrSourceTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="4" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Truncate  Smartsheet Clean SmartSheetPSS"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{DBF8779A-EDAD-47E9-9F56-CF7C40D06CD5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Truncate  Smartsheet Clean SmartSheetPSS"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{994E1584-413C-4FA6-8938-4B6DA199F080}"
+          SQLTask:SqlStatementSource="truncate table [AONOpExStaging].[dbo].[StgSmartSheetCleanSmartSheetPSS]" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{A143EA5F-FD19-45FA-B00C-0AB8A8F6C863}"
+      DTS:From="Package\SQL Log Package Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\SQL Truncate  Smartsheet Clean SmartSheetPSS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{19F3581E-EE26-4EB6-83BF-DA38363BFBC8}"
+      DTS:From="Package\SQL Truncate  Smartsheet Clean SmartSheetPSS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT Get SmartSheet Clean SmartSheetPSS" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{A42C6767-D5EE-4186-B5C2-127E0C4EC13B}"
+      DTS:From="Package\DFT Get SmartSheet Clean SmartSheetPSS"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Log Package End" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="281,42"
+          Id="Package\DFT Get SmartSheet Clean SmartSheetPSS"
+          TopLeft="146,233" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SQL Log Package End"
+          TopLeft="166,320" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\SQL Log Package Start"
+          TopLeft="101,31" />
+        <NodeLayout
+          Size="308,42"
+          Id="Package\SQL Truncate  Smartsheet Clean SmartSheetPSS"
+          TopLeft="125,132" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="194,73">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="85,59"
+              Start="0,0"
+              End="85,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.5"
+                    Point2="0,29.5"
+                    Point3="4,29.5" />
+                  <mssgle:LineSegment
+                    End="81,29.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="81,29.5"
+                    Point2="85,29.5"
+                    Point3="85,33.5" />
+                  <mssgle:LineSegment
+                    End="85,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="282.75,174">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,59"
+              Start="0,0"
+              End="0,51.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,51.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="286.5,275">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30,45"
+              Start="0,0"
+              End="-30,37.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.5"
+                    Point2="0,22.5"
+                    Point3="-4,22.5" />
+                  <mssgle:LineSegment
+                    End="-26,22.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-26,22.5"
+                    Point2="-30,22.5"
+                    Point3="-30,26.5" />
+                  <mssgle:LineSegment
+                    End="-30,37.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Get SmartSheet Clean SmartSheetPSS">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="283,42"
+          Id="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS"
+          TopLeft="55,52" />
+        <NodeLayout
+          Size="290,42"
+          Id="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS"
+          TopLeft="140,310" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\DFT Get SmartSheet Clean SmartSheetPSS\Row Count"
+          TopLeft="166,171" />
+        <EdgeLayout
+          Id="Package\DFT Get SmartSheet Clean SmartSheetPSS.Paths[Row Count Output 1]"
+          TopLeft="231,213">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="54,97"
+              Start="0,0"
+              End="54,89.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,44.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,44.5"
+                    Point2="0,48.5"
+                    Point3="4,48.5" />
+                  <mssgle:LineSegment
+                    End="50,48.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="50,48.5"
+                    Point2="54,48.5"
+                    Point3="54,52.5" />
+                  <mssgle:LineSegment
+                    End="54,89.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Get SmartSheet Clean SmartSheetPSS.Paths[OLE DB Source Output]"
+          TopLeft="196.5,94">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="34.5,77"
+              Start="0,0"
+              End="34.5,69.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,34.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,34.5"
+                    Point2="0,38.5"
+                    Point3="4,38.5" />
+                  <mssgle:LineSegment
+                    End="30.5,38.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="30.5,38.5"
+                    Point2="34.5,38.5"
+                    Point3="34.5,42.5" />
+                  <mssgle:LineSegment
+                    End="34.5,69.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE SRC SmartSheet Clean SmartSheetPSS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Get SmartSheet Clean SmartSheetPSS\OLE DEST SmartSheet Clean SmartSheetPSS">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

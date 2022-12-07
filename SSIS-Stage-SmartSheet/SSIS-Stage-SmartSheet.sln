@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS-Stage-SmartSheet", "SSIS-Stage-SmartSheet\SSIS-Stage-SmartSheet.dtproj", "{8FD9DDEC-7843-4E3C-B983-B6C72A73979E}"
+EndProject
+Project("{159641D6-6404-4A2A-AE62-294DE0FE8301}") = "SSIS-SmartSheetDataWarehouse", "..\SSIS-SmartSheetDataWarehouse\SSIS-SmartSheetDataWarehouse\SSIS-SmartSheetDataWarehouse.dtproj", "{774E7595-902E-46D4-B0B4-C5819177FD10}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Development|Default = Development|Default
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8FD9DDEC-7843-4E3C-B983-B6C72A73979E}.Development|Default.ActiveCfg = Development
+		{8FD9DDEC-7843-4E3C-B983-B6C72A73979E}.Development|Default.Build.0 = Development
+		{774E7595-902E-46D4-B0B4-C5819177FD10}.Development|Default.ActiveCfg = Development
+		{774E7595-902E-46D4-B0B4-C5819177FD10}.Development|Default.Build.0 = Development
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4E95C1DC-2ED7-4973-B242-2BBAEBF25556}
+	EndGlobalSection
+EndGlobal
