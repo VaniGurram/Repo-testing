@@ -1,0 +1,954 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/15/2019 11:33:30 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-PWC-UTL-003"
+  DTS:CreatorName="FCS\vani.gurram.FCS"
+  DTS:DTSID="{4CA20D49-A918-4605-B27A-9D37DA5B12F4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{E4C4375C-A3F2-45DA-BDC7-3AD126330E3A}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TF Excel Connection]"
+      DTS:CreationName="ExcelConnectionTF"
+      DTS:DTSID="{1246F64C-9A14-473E-A246-C2C0DBC901D0}"
+      DTS:ObjectName="TF Excel Connection">
+      <DTS:ObjectData>
+        <ExcelConnectionManager
+          ConnectionString="FilePath=C:\Users\vani.gurram.FCS\Desktop\OM LSW  whole raw data FROM DEC 2017 TO OCT 09 2019.xlsx;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BC465233-0F08-43AD-8DB6-18B0879414F1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination 1"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination 1"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DWOfficeManagerExcelRaw]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination 1.Connections[OleDbConnection]"
+                  connectionManagerID="{2AB459DC-4FD1-4A14-A173-43AA78334694}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TDC-BIS-SQL-001.OpExDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Clinic Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Clinic Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Provide corrective actions to lab QA findings]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Provide corrective actions to lab QA findings"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Provide corrective actions to lab QA findings]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Provide corrective actions to lab QA findings]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Review clinic dashboard metrics &amp; audit completion]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Review clinic dashboard metrics &amp; audit completion"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Review clinic dashboard metrics &amp; audit completion]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review clinic dashboard metrics &amp; audit completion]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[PHQ-9 Audit &amp; Clean-up]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PHQ-9 Audit &amp; Clean-up"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[PHQ-9 Audit &amp; Clean-up]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[PHQ-9 Audit &amp; Clean-up]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Pain scale in Onco completed]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pain scale in Onco completed"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Pain scale in Onco completed]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pain scale in Onco completed]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Send performance board metrics]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Send performance board metrics"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Send performance board metrics]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Send performance board metrics]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Coordinate Staff Training]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Coordinate Staff Training"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Coordinate Staff Training]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Coordinate Staff Training]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Observe a daily huddle]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Observe a daily huddle"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Observe a daily huddle]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Observe a daily huddle]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Review clinic dashboard metrics with staff]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Review clinic dashboard metrics with staff"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Review clinic dashboard metrics with staff]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review clinic dashboard metrics with staff]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Monthly lab QA activity performance report]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Monthly lab QA activity performance report"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Monthly lab QA activity performance report]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Monthly lab QA activity performance report]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Run Front Staff Report]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Run Front Staff Report"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Run Front Staff Report]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Run Front Staff Report]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].Columns[Additional Comments]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="250"
+                      cachedName="Additional Comments"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Additional Comments]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Additional Comments]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[OfficeManagerID]"
+                      dataType="i4"
+                      name="OfficeManagerID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Provide corrective actions to lab QA findings]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Provide corrective actions to lab QA findings" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Review clinic dashboard metrics &amp; audit completion]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review clinic dashboard metrics &amp; audit completion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[PHQ-9 Audit &amp; Clean-up]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PHQ-9 Audit &amp; Clean-up" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Pain scale in Onco completed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pain scale in Onco completed" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Send performance board metrics]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Send performance board metrics" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Coordinate Staff Training]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Coordinate Staff Training" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Observe a daily huddle]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Observe a daily huddle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Review clinic dashboard metrics with staff]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review clinic dashboard metrics with staff" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Monthly lab QA activity performance report]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Monthly lab QA activity performance report" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Run Front Staff Report]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Run Front Staff Report" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[Additional Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="250"
+                      name="Additional Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input].ExternalColumns[LoadDate]"
+                      dataType="dbTimeStamp"
+                      name="LoadDate" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination 1.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination 1.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\TF Excel Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="TF Excel Source;SQL Sentry, LLC; Task Factory (c) 2009 - 2019; https://www.sentryone.com;support@sentryone.com"
+              description="TF Excel Source"
+              name="TF Excel Source"
+              usesDispositions="true"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  name="DebugMode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The first column to read data from"
+                  expressionType="Notify"
+                  name="Column Start">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The last column to read data from"
+                  expressionType="Notify"
+                  name="Column End">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The first row to read data from"
+                  expressionType="Notify"
+                  name="Row Start">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The last row to read data from"
+                  expressionType="Notify"
+                  name="Row End">-1</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the worksheet to read data from"
+                  expressionType="Notify"
+                  name="Worksheet Name">Office Manager Leadership Stand</property>
+                <property
+                  dataType="System.String"
+                  description="Named range to use when reading data"
+                  expressionType="Notify"
+                  name="Named Range"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode of which to read the region from the excel spreadsheet"
+                  expressionType="Notify"
+                  name="Region Mode"
+                  typeConverter="PragmaticWorks.TaskFactory.Components.Sources.Excel.RegionMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicated if the first row of data contains the column names"
+                  expressionType="Notify"
+                  name="First Row Contains Column Name">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="The format to read the rows out of the spreadsheet"
+                  expressionType="Notify"
+                  name="Output Format"
+                  typeConverter="PragmaticWorks.TaskFactory.Components.Sources.Excel.OutputFormatStyle">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PragmaticWorks.TaskFactory.ExcelSource</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\TF Excel Source.Connections[EXCELCONNECTION]"
+                  connectionManagerID="Package.ConnectionManagers[TF Excel Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[TF Excel Connection]"
+                  description="Excel Connection"
+                  name="EXCELCONNECTION" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output]"
+                  errorRowDisposition="IgnoreFailure"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Created]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Clinic Name]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Provide corrective actions to lab QA findings]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Provide corrective actions to lab QA findings]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Provide corrective actions to lab QA findings]"
+                      name="Provide corrective actions to lab QA findings" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review clinic dashboard metrics &amp; audit completion]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review clinic dashboard metrics &amp; audit completion]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review clinic dashboard metrics &amp; audit completion]"
+                      name="Review clinic dashboard metrics &amp; audit completion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[PHQ-9 Audit &amp; Clean-up]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[PHQ-9 Audit &amp; Clean-up]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[PHQ-9 Audit &amp; Clean-up]"
+                      name="PHQ-9 Audit &amp; Clean-up" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pain scale in Onco completed]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pain scale in Onco completed]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pain scale in Onco completed]"
+                      name="Pain scale in Onco completed" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Send performance board metrics]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Send performance board metrics]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Send performance board metrics]"
+                      name="Send performance board metrics" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Coordinate Staff Training]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Coordinate Staff Training]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Coordinate Staff Training]"
+                      name="Coordinate Staff Training" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Observe a daily huddle]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Observe a daily huddle]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Observe a daily huddle]"
+                      name="Observe a daily huddle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review clinic dashboard metrics with staff]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review clinic dashboard metrics with staff]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review clinic dashboard metrics with staff]"
+                      name="Review clinic dashboard metrics with staff" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Monthly lab QA activity performance report]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Monthly lab QA activity performance report]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Monthly lab QA activity performance report]"
+                      name="Monthly lab QA activity performance report" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Run Front Staff Report]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Run Front Staff Report]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Run Front Staff Report]"
+                      name="Run Front Staff Report" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Additional Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Additional Comments]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Additional Comments]"
+                      name="Additional Comments" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Created]"
+                      dataType="wstr"
+                      length="250"
+                      name="Created">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Clinic Name">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">2</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Provide corrective actions to lab QA findings]"
+                      dataType="wstr"
+                      length="250"
+                      name="Provide corrective actions to lab QA findings">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">3</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review clinic dashboard metrics &amp; audit completion]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review clinic dashboard metrics &amp; audit completion">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">4</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[PHQ-9 Audit &amp; Clean-up]"
+                      dataType="wstr"
+                      length="250"
+                      name="PHQ-9 Audit &amp; Clean-up">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">5</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pain scale in Onco completed]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pain scale in Onco completed">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">6</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Send performance board metrics]"
+                      dataType="wstr"
+                      length="250"
+                      name="Send performance board metrics">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">7</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Coordinate Staff Training]"
+                      dataType="wstr"
+                      length="250"
+                      name="Coordinate Staff Training">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">8</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Observe a daily huddle]"
+                      dataType="wstr"
+                      length="250"
+                      name="Observe a daily huddle">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">9</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review clinic dashboard metrics with staff]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review clinic dashboard metrics with staff">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">10</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Monthly lab QA activity performance report]"
+                      dataType="wstr"
+                      length="250"
+                      name="Monthly lab QA activity performance report">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">11</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Run Front Staff Report]"
+                      dataType="wstr"
+                      length="250"
+                      name="Run Front Staff Report">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">12</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Additional Comments]"
+                      dataType="wstr"
+                      length="250"
+                      name="Additional Comments">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">13</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Created]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Created]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Clinic Name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Clinic Name]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Provide corrective actions to lab QA findings]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Provide corrective actions to lab QA findings]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Provide corrective actions to lab QA findings]"
+                      name="Provide corrective actions to lab QA findings" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review clinic dashboard metrics &amp; audit completion]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review clinic dashboard metrics &amp; audit completion]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review clinic dashboard metrics &amp; audit completion]"
+                      name="Review clinic dashboard metrics &amp; audit completion" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[PHQ-9 Audit &amp; Clean-up]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[PHQ-9 Audit &amp; Clean-up]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[PHQ-9 Audit &amp; Clean-up]"
+                      name="PHQ-9 Audit &amp; Clean-up" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pain scale in Onco completed]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pain scale in Onco completed]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pain scale in Onco completed]"
+                      name="Pain scale in Onco completed" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Send performance board metrics]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Send performance board metrics]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Send performance board metrics]"
+                      name="Send performance board metrics" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Coordinate Staff Training]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Coordinate Staff Training]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Coordinate Staff Training]"
+                      name="Coordinate Staff Training" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Observe a daily huddle]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Observe a daily huddle]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Observe a daily huddle]"
+                      name="Observe a daily huddle" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review clinic dashboard metrics with staff]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review clinic dashboard metrics with staff]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review clinic dashboard metrics with staff]"
+                      name="Review clinic dashboard metrics with staff" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Monthly lab QA activity performance report]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Monthly lab QA activity performance report]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Monthly lab QA activity performance report]"
+                      name="Monthly lab QA activity performance report" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Run Front Staff Report]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Run Front Staff Report]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Run Front Staff Report]"
+                      name="Run Front Staff Report" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Additional Comments]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Additional Comments]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Additional Comments]"
+                      name="Additional Comments" />
+                  </outputColumns>
+                  <externalMetadataColumns>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Created]"
+                      dataType="wstr"
+                      length="250"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Provide corrective actions to lab QA findings]"
+                      dataType="wstr"
+                      length="250"
+                      name="Provide corrective actions to lab QA findings" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review clinic dashboard metrics &amp; audit completion]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review clinic dashboard metrics &amp; audit completion" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[PHQ-9 Audit &amp; Clean-up]"
+                      dataType="wstr"
+                      length="250"
+                      name="PHQ-9 Audit &amp; Clean-up" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pain scale in Onco completed]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pain scale in Onco completed" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Send performance board metrics]"
+                      dataType="wstr"
+                      length="250"
+                      name="Send performance board metrics" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Coordinate Staff Training]"
+                      dataType="wstr"
+                      length="250"
+                      name="Coordinate Staff Training" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Observe a daily huddle]"
+                      dataType="wstr"
+                      length="250"
+                      name="Observe a daily huddle" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review clinic dashboard metrics with staff]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review clinic dashboard metrics with staff" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Monthly lab QA activity performance report]"
+                      dataType="wstr"
+                      length="250"
+                      name="Monthly lab QA activity performance report" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Run Front Staff Report]"
+                      dataType="wstr"
+                      length="250"
+                      name="Run Front Staff Report" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Additional Comments]"
+                      dataType="wstr"
+                      length="250"
+                      name="Additional Comments" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\OLE DB Destination 1.Inputs[OLE DB Destination Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="65.5,65.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\TF Excel Source"
+          TopLeft="150,43" />
+        <NodeLayout
+          Size="180,42"
+          Id="Package\Data Flow Task\OLE DB Destination 1"
+          TopLeft="169,177" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="227,85">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="32,92"
+              Start="0,0"
+              End="32,84.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42"
+                    Point2="0,46"
+                    Point3="4,46" />
+                  <mssgle:LineSegment
+                    End="28,46" />
+                  <mssgle:CubicBezierSegment
+                    Point1="28,46"
+                    Point2="32,46"
+                    Point3="32,50" />
+                  <mssgle:LineSegment
+                    End="32,84.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination 1">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

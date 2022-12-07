@@ -1,0 +1,1504 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/11/2019 1:00:11 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-PWC-UTL-003"
+  DTS:CreatorName="FCS\vani.gurram.FCS"
+  DTS:DTSID="{16D3B021-9E95-401E-8383-492FC05E7DE7}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package6"
+  DTS:PackageType="5"
+  DTS:VersionBuild="3"
+  DTS:VersionGUID="{8BC718F2-A89F-4D97-BCD5-F69D0EEF89FA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TF Excel Connection]"
+      DTS:CreationName="ExcelConnectionTF"
+      DTS:DTSID="{3097BA44-68D7-4397-8970-BB4E357AEBC1}"
+      DTS:ObjectName="TF Excel Connection">
+      <DTS:ObjectData>
+        <ExcelConnectionManager
+          ConnectionString="FilePath=C:\Users\vani.gurram.FCS\Desktop\PSS LSW  whole raw data FROM SEP 2018 TO OCT 09 2019.xlsx;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{1F90A267-6344-410E-9AD9-73D363458283}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[au]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[au]"
+                      name="au"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ABS](1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ABS(1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[in]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[in]"
+                      name="in"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ABS](1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ABS(1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DWSmartSheetPSSExcel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{2AB459DC-4FD1-4A14-A173-43AA78334694}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TDC-BIS-SQL-001.OpExDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Source]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Clinic Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Clinic Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Check In Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Check In Correct"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Check In Correct]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Check In Correct]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Check Out Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Check Out Correct"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Check Out Correct]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Check Out Correct]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[New Patient Paperwork Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="New Patient Paperwork Correct"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[New Patient Paperwork Correct]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[New Patient Paperwork Correct]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[No Show Correct]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="No Show Correct"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[No Show Correct]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[No Show Correct]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their first &amp; last name PSS IN"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their first &amp; last name PSS IN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pt asked to state their DOB PSS IN]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their DOB PSS IN"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their DOB PSS IN]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Confirm patient is enrolled in CareSpace]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Confirm patient is enrolled in CareSpace"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirm patient is enrolled in CareSpace]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Review electronic AR &amp; patient payment amts]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Review electronic AR &amp; patient payment amts"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review electronic AR &amp; patient payment amts]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pt asked to state their DOB PSS OUT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their DOB PSS OUT"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their DOB PSS OUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Review and schedule current day's orders]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Review and schedule current day's orders"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Review and schedule current day's orders]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review and schedule current day's orders]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Depart patient at check-out]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Depart patient at check-out"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Depart patient at check-out]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Depart patient at check-out]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt First Name, Last Name, DOB, Sex, &amp; PCP info."
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Insurance Carrier, Insurance ID, Group #"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Insurance Carrier, Insurance ID, Group #]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[No Show Report Follow-Up]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="No Show Report Follow-Up"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[No Show Report Follow-Up]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[No Show Report Follow-Up]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[PSS Follow-up Comments]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PSS Follow-up Comments"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PSS Follow-up Comments]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[PSS Follow-up Comments]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AUDITOR]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="200"
+                      cachedName="AUDITOR"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[AUDITOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[au]"
+                      cachedDataType="i4"
+                      cachedName="au"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[au]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[in]"
+                      cachedDataType="i4"
+                      cachedName="in"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[in]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="If pt, in-house  scan give Rad. disclosure &amp; prep"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[If pt, in-house scan give Rad. disclosure &amp; prep]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pt asked to state their first  &amp; last name PSS OUT"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS OUT]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Row]"
+                      cachedDataType="i4"
+                      cachedName="Row"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Row]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PSSKey]"
+                      dataType="i4"
+                      name="PSSKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="500"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Check In Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Check In Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Check Out Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Check Out Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[New Patient Paperwork Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="New Patient Paperwork Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[No Show Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="No Show Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first &amp; last name PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Confirm patient is enrolled in CareSpace" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review electronic AR &amp; patient payment amts" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their first &amp; last name PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their first &amp; last name PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt asked to state their DOB PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Review and schedule current day's orders]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Review and schedule current day's orders" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[If pt, in-house scan give Rad. disclosure &amp; prep]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="If pt, in-house scan give Rad. disclosure &amp; prep" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Depart patient at check-out]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Depart patient at check-out" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info." />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Insurance Carrier, Insurance ID, Group #" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[No Show Report Follow-Up]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="No Show Report Follow-Up" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[PSS Follow-up Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PSS Follow-up Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      length="200"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      dataType="i4"
+                      name="InsertAuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      dataType="i4"
+                      name="UpdateAuditKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\TF Excel Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="TF Excel Source;SQL Sentry, LLC; Task Factory (c) 2009 - 2019; https://www.sentryone.com;support@sentryone.com"
+              description="TF Excel Source"
+              name="TF Excel Source"
+              usesDispositions="true"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  name="DebugMode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The first column to read data from"
+                  expressionType="Notify"
+                  name="Column Start">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The last column to read data from"
+                  expressionType="Notify"
+                  name="Column End">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The first row to read data from"
+                  expressionType="Notify"
+                  name="Row Start">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The last row to read data from"
+                  expressionType="Notify"
+                  name="Row End">-1</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the worksheet to read data from"
+                  expressionType="Notify"
+                  name="Worksheet Name">Sheet1</property>
+                <property
+                  dataType="System.String"
+                  description="Named range to use when reading data"
+                  expressionType="Notify"
+                  name="Named Range"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode of which to read the region from the excel spreadsheet"
+                  expressionType="Notify"
+                  name="Region Mode"
+                  typeConverter="PragmaticWorks.TaskFactory.Components.Sources.Excel+RegionMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicated if the first row of data contains the column names"
+                  expressionType="Notify"
+                  name="First Row Contains Column Name">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="The format to read the rows out of the spreadsheet"
+                  expressionType="Notify"
+                  name="Output Format"
+                  typeConverter="PragmaticWorks.TaskFactory.Components.Sources.Excel+OutputFormatStyle">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PragmaticWorks.TaskFactory.ExcelSource</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\TF Excel Source.Connections[EXCELCONNECTION]"
+                  connectionManagerID="Package.ConnectionManagers[TF Excel Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[TF Excel Connection]"
+                  description="Excel Connection"
+                  name="EXCELCONNECTION" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output]"
+                  errorRowDisposition="IgnoreFailure"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Created]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Row]"
+                      dataType="i4"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Row]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Row]"
+                      name="Row" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Clinic Name]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Check In Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Check In Correct]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Check In Correct]"
+                      name="Check In Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Check Out Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Check Out Correct]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Check Out Correct]"
+                      name="Check Out Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[New Patient Paperwork Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[New Patient Paperwork Correct]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[New Patient Paperwork Correct]"
+                      name="New Patient Paperwork Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[No Show Correct]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[No Show Correct]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[No Show Correct]"
+                      name="No Show Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      name="Pt asked to state their first &amp; last name PSS IN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their DOB PSS IN]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their DOB PSS IN]"
+                      name="Pt asked to state their DOB PSS IN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      name="Confirm patient is enrolled in CareSpace" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      name="Review electronic AR &amp; patient payment amts" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      name="Pt asked to state their first  &amp; last name PSS OUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      name="Pt asked to state their DOB PSS OUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review and schedule current day's orders]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review and schedule current day's orders]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Review and schedule current day's orders]"
+                      name="Review and schedule current day's orders" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      name="If pt, in-house  scan give Rad. disclosure &amp; prep" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Depart patient at check-out]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Depart patient at check-out]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Depart patient at check-out]"
+                      name="Depart patient at check-out" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info." />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      name="Insurance Carrier, Insurance ID, Group #" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[No Show Report Follow-Up]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[No Show Report Follow-Up]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[No Show Report Follow-Up]"
+                      name="No Show Report Follow-Up" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[PSS Follow-up Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[PSS Follow-up Comments]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[PSS Follow-up Comments]"
+                      name="PSS Follow-up Comments" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[AUDITOR]"
+                      codePage="1252"
+                      dataType="str"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[AUDITOR]"
+                      length="200"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[AUDITOR]"
+                      name="AUDITOR" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="250"
+                      name="Source">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Created]"
+                      dataType="wstr"
+                      length="250"
+                      name="Created">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">2</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Row]"
+                      dataType="wstr"
+                      length="250"
+                      name="Row">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">3</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Clinic Name">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">4</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Check In Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="Check In Correct">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">5</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Check Out Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="Check Out Correct">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">6</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[New Patient Paperwork Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="New Patient Paperwork Correct">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">7</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[No Show Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="No Show Correct">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">8</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their first &amp; last name PSS IN">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">9</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their DOB PSS IN">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">10</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirm patient is enrolled in CareSpace">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">11</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review electronic AR &amp; patient payment amts">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">12</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their first  &amp; last name PSS OUT">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">13</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their DOB PSS OUT">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">14</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Review and schedule current day's orders]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review and schedule current day's orders">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">15</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      dataType="wstr"
+                      length="250"
+                      name="If pt, in-house  scan give Rad. disclosure &amp; prep">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">16</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Depart patient at check-out]"
+                      dataType="wstr"
+                      length="250"
+                      name="Depart patient at check-out">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info.">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">18</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      dataType="wstr"
+                      length="250"
+                      name="Insurance Carrier, Insurance ID, Group #">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">19</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[No Show Report Follow-Up]"
+                      dataType="wstr"
+                      length="250"
+                      name="No Show Report Follow-Up">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">20</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[PSS Follow-up Comments]"
+                      dataType="wstr"
+                      length="250"
+                      name="PSS Follow-up Comments">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">21</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[AUDITOR]"
+                      dataType="wstr"
+                      length="250"
+                      name="AUDITOR">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">22</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Source]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Created]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Created]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Row]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Row]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Row]"
+                      name="Row" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Clinic Name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Clinic Name]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Check In Correct]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Check In Correct]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Check In Correct]"
+                      name="Check In Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Check Out Correct]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Check Out Correct]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Check Out Correct]"
+                      name="Check Out Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[New Patient Paperwork Correct]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[New Patient Paperwork Correct]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[New Patient Paperwork Correct]"
+                      name="New Patient Paperwork Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[No Show Correct]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[No Show Correct]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[No Show Correct]"
+                      name="No Show Correct" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their first &amp; last name PSS IN]"
+                      name="Pt asked to state their first &amp; last name PSS IN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their DOB PSS IN]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their DOB PSS IN]"
+                      name="Pt asked to state their DOB PSS IN" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirm patient is enrolled in CareSpace]"
+                      name="Confirm patient is enrolled in CareSpace" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review electronic AR &amp; patient payment amts]"
+                      name="Review electronic AR &amp; patient payment amts" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      name="Pt asked to state their first  &amp; last name PSS OUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt asked to state their DOB PSS OUT]"
+                      name="Pt asked to state their DOB PSS OUT" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review and schedule current day's orders]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review and schedule current day's orders]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Review and schedule current day's orders]"
+                      name="Review and schedule current day's orders" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      name="If pt, in-house  scan give Rad. disclosure &amp; prep" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Depart patient at check-out]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Depart patient at check-out]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Depart patient at check-out]"
+                      name="Depart patient at check-out" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info." />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Insurance Carrier, Insurance ID, Group #]"
+                      name="Insurance Carrier, Insurance ID, Group #" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[No Show Report Follow-Up]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[No Show Report Follow-Up]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[No Show Report Follow-Up]"
+                      name="No Show Report Follow-Up" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[PSS Follow-up Comments]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[PSS Follow-up Comments]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[PSS Follow-up Comments]"
+                      name="PSS Follow-up Comments" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[AUDITOR]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[AUDITOR]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[AUDITOR]"
+                      name="AUDITOR" />
+                  </outputColumns>
+                  <externalMetadataColumns>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Created]"
+                      dataType="wstr"
+                      length="250"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Row]"
+                      dataType="wstr"
+                      length="250"
+                      name="Row" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Check In Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="Check In Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Check Out Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="Check Out Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[New Patient Paperwork Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="New Patient Paperwork Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[No Show Correct]"
+                      dataType="wstr"
+                      length="250"
+                      name="No Show Correct" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their first &amp; last name PSS IN]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their first &amp; last name PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their DOB PSS IN]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their DOB PSS IN" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirm patient is enrolled in CareSpace]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirm patient is enrolled in CareSpace" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review electronic AR &amp; patient payment amts]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review electronic AR &amp; patient payment amts" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their first  &amp; last name PSS OUT]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their first  &amp; last name PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt asked to state their DOB PSS OUT]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt asked to state their DOB PSS OUT" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Review and schedule current day's orders]"
+                      dataType="wstr"
+                      length="250"
+                      name="Review and schedule current day's orders" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[If pt, in-house  scan give Rad. disclosure &amp; prep]"
+                      dataType="wstr"
+                      length="250"
+                      name="If pt, in-house  scan give Rad. disclosure &amp; prep" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Depart patient at check-out]"
+                      dataType="wstr"
+                      length="250"
+                      name="Depart patient at check-out" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Pt First Name, Last Name, DOB, Sex, &amp; PCP info.]"
+                      dataType="wstr"
+                      length="250"
+                      name="Pt First Name, Last Name, DOB, Sex, &amp; PCP info." />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Insurance Carrier, Insurance ID, Group #]"
+                      dataType="wstr"
+                      length="250"
+                      name="Insurance Carrier, Insurance ID, Group #" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[No Show Report Follow-Up]"
+                      dataType="wstr"
+                      length="250"
+                      name="No Show Report Follow-Up" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[PSS Follow-up Comments]"
+                      dataType="wstr"
+                      length="250"
+                      name="PSS Follow-up Comments" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[AUDITOR]"
+                      dataType="wstr"
+                      length="250"
+                      name="AUDITOR" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\TF Excel Source"
+          TopLeft="84,40" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="82,129" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="132,235" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="159,171">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="58.5,64"
+              Start="0,0"
+              End="58.5,56.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28"
+                    Point2="0,32"
+                    Point3="4,32" />
+                  <mssgle:LineSegment
+                    End="54.5,32" />
+                  <mssgle:CubicBezierSegment
+                    Point1="54.5,32"
+                    Point2="58.5,32"
+                    Point3="58.5,36" />
+                  <mssgle:LineSegment
+                    End="58.5,56.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="160,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,47"
+              Start="0,0"
+              End="0,39.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

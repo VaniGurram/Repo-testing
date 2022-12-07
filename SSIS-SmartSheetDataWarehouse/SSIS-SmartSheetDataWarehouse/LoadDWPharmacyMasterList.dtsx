@@ -1,0 +1,2274 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/2/2018 11:27:07 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-PWC-UTL-001"
+  DTS:CreatorName="FCS\ven.pwc.mwinitzer"
+  DTS:DTSID="{7E791A15-DC57-4BF2-9B72-49E363A1790E}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.166"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LoadDWPharmacyMasterList"
+  DTS:PackageType="5"
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{51678B3E-1265-4413-AFEB-8F4AB10DA36E}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="OLEDB_BIXPRESS_1"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:DelayValidation="True"
+      DTS:Description="SSISOps : DON'T CHANGE PREFIX. "
+      DTS:DTSID="{9B13C0CE-43F5-4938-B98B-8C8B6AB08B24}"
+      DTS:ObjectName="BIxPress Log Provider">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{E4A4A0AA-98AF-48E1-802E-84AFFEF57B5B}"
+      DTS:ObjectName="StrOpExDataWarehouseADONET_ConnectionString">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Data Source=TDC-BIS-SQL-001;Initial Catalog=OpExDataWarehouse;Integrated Security=True;Application Name=SSIS-insupdate-{ED292452-BC8E-4D88-8339-4A35FF706BA8}TDC-BIS-SQL-001.OpExDataWarehouse 1;</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{F032759A-D7EE-4FB7-AF30-B24FC8BA7493}"
+      DTS:ObjectName="varParentAuditKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{95A136EA-C6A8-484B-8FFE-89836054C95A}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varAuditKey"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2D8F2C3B-63EF-4719-99B3-BF56F5AAF308}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varErrorCount"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{68BEE53A-D97B-4145-B527-004608ACE0F7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varInsertCount"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{4741D701-9C23-4635-BFF0-1BAF74CE8FE9}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;Pharmacy Contact Master List&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varTableName"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="8">Pharmacy Contact Master List</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{CE397BA0-CCFF-4C68-983D-646669FE39F1}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varUpdateCount"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">7,22,PipelineInitialization,18,OnPipelineRowsSent,24,OnPipelinePrePrimeOutput,25,OnPipelinePostPrimeOutput,24,OnPipelinePreEndOfRowset,25,OnPipelinePostEndOfRowset,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostPrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePreEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePrePrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="PipelineInitialization"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{9B13C0CE-43F5-4938-B98B-8C8B6AB08B24}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load DW PSS Insert"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{ECC04C82-423E-4A22-A9AA-89E5D124FF03}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load DW PSS Insert"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load DW PSS Insert\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DWSheetPharmacyMasterContactList]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{2AB459DC-4FD1-4A14-A173-43AA78334694}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002 OpExDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i8"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Clinic Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Clinic Name"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Clinic Name]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Group]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Group"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Group]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Provider Group]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Provider Group"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Provider Group]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Provider Group]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Group Transition Date]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Group Transition Date"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Group Transition Date]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Group Transition Date]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Acronym]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Acronym"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acronym]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Acronym]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[OncoEMR Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="OncoEMR Name"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OncoEMR Name]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[OncoEMR Name]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Location name in ONCO]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Location name in ONCO"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location name in ONCO]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Location name in ONCO]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nucleus Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Nucleus Name"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus Name]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nucleus Name]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[# of Physician in group]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="# of Physician in group"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[# of Physician in group]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[# of Physician in group]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[State]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="State"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="300"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Hours of Operations]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Hours of Operations"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hours of Operations]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Hours of Operations]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Phone #]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Phone #"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone #]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone #]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Fax #]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Fax #"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fax #]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax #]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pharmacy Technician]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Pharmacy Technician"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pharmacy Technician]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Pharmacy Technician]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Head Nurse]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Head Nurse"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Head Nurse]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Nurse]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Head Nurse Phone Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Head Nurse Phone Number"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Head Nurse Phone Number]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Nurse Phone Number]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Office Manager]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Office Manager"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Office Manager]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Office Manager]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Office Manager Phone Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Office Manager Phone Number"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Office Manager Phone Number]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Office Manager Phone Number]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Regional Clinical Pharmacist]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Regional Clinical Pharmacist"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional Clinical Pharmacist]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Clinical Pharmacist]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sr. Regional VP]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Sr. Regional VP"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sr. Regional VP]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sr. Regional VP]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Sr. Regional VP Phone Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Sr. Regional VP Phone Number"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sr. Regional VP Phone Number]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sr. Regional VP Phone Number]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Regional Director]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Regional Director"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional Director]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Director]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Regional Director Phone Number]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Regional Director Phone Number"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional Director Phone Number]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Director Phone Number]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Research Coordinator]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Research Coordinator"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Research Coordinator]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Research Coordinator]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Research]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Research"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Research]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Research]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Financial Counselor]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="300"
+                      cachedName="Financial Counselor"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Financial Counselor]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Financial Counselor]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FC Manager]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="FC Manager"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FC Manager]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[FC Manager]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Rev Cycle Manager]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Rev Cycle Manager"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rev Cycle Manager]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Rev Cycle Manager]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[FedEx Account #s]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="FedEx Account #s"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FedEx Account #s]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[FedEx Account #s]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Head Physician]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="150"
+                      cachedName="Head Physician"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Head Physician]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Physician]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Physician License #]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Physician License #"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Physician License #]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Physician License #]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[DEA #]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="DEA #"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEA #]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEA #]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Oncology Supply Account #s]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Oncology Supply Account #s"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Oncology Supply Account #s]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Oncology Supply Account #s]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Column29]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Column29"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column29]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Column29]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[LoadDate]"
+                      cachedDataType="dbDate"
+                      cachedName="LoadDate"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadDate]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[LoadDate]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Pharmacy Trainer]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Pharmacy Trainer"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pharmacy Traner]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Pharmacy Trainer]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Group" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Provider Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Provider Group" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Group Transition Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Group Transition Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Acronym]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Acronym" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[OncoEMR Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="OncoEMR Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Location name in ONCO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Location name in ONCO" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Nucleus Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[# of Physician in group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="# of Physician in group" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Hours of Operations]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Hours of Operations" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Phone #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Phone #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Fax #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Fax #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pharmacy Technician]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Pharmacy Technician" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Head Nurse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Head Nurse" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Head Nurse Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Head Nurse Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Office Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Office Manager" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Office Manager Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Office Manager Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional Clinical Pharmacist]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Regional Clinical Pharmacist" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sr. Regional VP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Sr. Regional VP" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Sr. Regional VP Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Sr. Regional VP Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional Director]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Regional Director" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Regional Director Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Regional Director Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Research Coordinator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Research Coordinator" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Research]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Research" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Financial Counselor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      name="Financial Counselor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FC Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="FC Manager" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Rev Cycle Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Rev Cycle Manager" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[FedEx Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FedEx Account #s" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Head Physician]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Head Physician" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Physician License #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Physician License #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[DEA #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DEA #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Oncology Supply Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Oncology Supply Account #s" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Column29]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Column29" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[LoadDate]"
+                      dataType="dbDate"
+                      name="LoadDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Pharmacy Traner]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Pharmacy Traner" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DW PSS Insert\OLE DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">SELECT *
+  FROM [AONOpExStaging].[dbo].[SmartSheetPharmacyMasterContactList]</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DW PSS Insert\OLE DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{E9BDF7A8-FEA5-4998-ACA7-E0EA6D09642D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TDC-BIS-SQL-001.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Clinic Name]"
+                      name="Clinic Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Group]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Group]"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Group]"
+                      name="Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Provider Group]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Provider Group]"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Provider Group]"
+                      name="Provider Group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Group Transition Date]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Group Transition Date]"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Group Transition Date]"
+                      name="Group Transition Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Acronym]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Acronym]"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Acronym]"
+                      name="Acronym"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[OncoEMR Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OncoEMR Name]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[OncoEMR Name]"
+                      name="OncoEMR Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Location name in ONCO]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Location name in ONCO]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Location name in ONCO]"
+                      name="Location name in ONCO"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nucleus Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nucleus Name]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Nucleus Name]"
+                      name="Nucleus Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[# of Physician in group]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[# of Physician in group]"
+                      length="10"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[# of Physician in group]"
+                      name="# of Physician in group"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      length="10"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[State]"
+                      name="State"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="300"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Hours of Operations]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Hours of Operations]"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Hours of Operations]"
+                      name="Hours of Operations"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone #]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Phone #]"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Phone #]"
+                      name="Phone #"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax #]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fax #]"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Fax #]"
+                      name="Fax #"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Pharmacy Technician]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy Technician]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Pharmacy Technician]"
+                      name="Pharmacy Technician"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Nurse]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Head Nurse]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Nurse]"
+                      name="Head Nurse"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Nurse Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Head Nurse Phone Number]"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Nurse Phone Number]"
+                      name="Head Nurse Phone Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Office Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Office Manager]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Office Manager]"
+                      name="Office Manager"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Office Manager Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Office Manager Phone Number]"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Office Manager Phone Number]"
+                      name="Office Manager Phone Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Clinical Pharmacist]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Regional Clinical Pharmacist]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Clinical Pharmacist]"
+                      name="Regional Clinical Pharmacist"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sr. Regional VP]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sr. Regional VP]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sr. Regional VP]"
+                      name="Sr. Regional VP"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sr. Regional VP Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sr. Regional VP Phone Number]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Sr. Regional VP Phone Number]"
+                      name="Sr. Regional VP Phone Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Director]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Regional Director]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Director]"
+                      name="Regional Director"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Director Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Regional Director Phone Number]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Regional Director Phone Number]"
+                      name="Regional Director Phone Number"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Research Coordinator]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Research Coordinator]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Research Coordinator]"
+                      name="Research Coordinator"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Research]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Research]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Research]"
+                      name="Research"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Financial Counselor]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Financial Counselor]"
+                      length="300"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Financial Counselor]"
+                      name="Financial Counselor"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[FC Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FC Manager]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[FC Manager]"
+                      name="FC Manager"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Rev Cycle Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Rev Cycle Manager]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Rev Cycle Manager]"
+                      name="Rev Cycle Manager"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[FedEx Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FedEx Account #s]"
+                      length="50"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[FedEx Account #s]"
+                      name="FedEx Account #s"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Physician]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Head Physician]"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Head Physician]"
+                      name="Head Physician"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Physician License #]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Physician License #]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Physician License #]"
+                      name="Physician License #"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEA #]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEA #]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[DEA #]"
+                      name="DEA #"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Oncology Supply Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Oncology Supply Account #s]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Oncology Supply Account #s]"
+                      name="Oncology Supply Account #s"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Column29]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Column29]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Column29]"
+                      name="Column29"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[LoadDate]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LoadDate]"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[LoadDate]"
+                      name="LoadDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Pharmacy Trainer]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy Trainer]"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].Columns[Pharmacy Trainer]"
+                      name="Pharmacy Trainer"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Group" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Provider Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Provider Group" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Group Transition Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Group Transition Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Acronym]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Acronym" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[OncoEMR Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="OncoEMR Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Location name in ONCO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Location name in ONCO" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Nucleus Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Nucleus Name" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[# of Physician in group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="# of Physician in group" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="State" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Hours of Operations]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Hours of Operations" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Phone #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Phone #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Fax #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Fax #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy Technician]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Pharmacy Technician" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Head Nurse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Head Nurse" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Head Nurse Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Head Nurse Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Office Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Office Manager" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Office Manager Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Office Manager Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Regional Clinical Pharmacist]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Regional Clinical Pharmacist" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sr. Regional VP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Sr. Regional VP" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Sr. Regional VP Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Sr. Regional VP Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Regional Director]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Regional Director" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Regional Director Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Regional Director Phone Number" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Research Coordinator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Research Coordinator" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Research]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Research" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Financial Counselor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      name="Financial Counselor" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FC Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="FC Manager" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Rev Cycle Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Rev Cycle Manager" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[FedEx Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="FedEx Account #s" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Head Physician]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      name="Head Physician" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Physician License #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Physician License #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[DEA #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="DEA #" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Oncology Supply Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Oncology Supply Account #s" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Column29]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Column29" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[LoadDate]"
+                      dataType="dbDate"
+                      name="LoadDate" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy Trainer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Pharmacy Trainer" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Group]"
+                      name="Group" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Provider Group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Provider Group]"
+                      name="Provider Group" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Group Transition Date]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Group Transition Date]"
+                      name="Group Transition Date" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Acronym]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Acronym]"
+                      name="Acronym" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OncoEMR Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[OncoEMR Name]"
+                      name="OncoEMR Name" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Location name in ONCO]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Location name in ONCO]"
+                      name="Location name in ONCO" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nucleus Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Nucleus Name]"
+                      name="Nucleus Name" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[# of Physician in group]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[# of Physician in group]"
+                      name="# of Physician in group" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[State]"
+                      name="State" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Hours of Operations]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Hours of Operations]"
+                      name="Hours of Operations" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Phone #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Phone #]"
+                      name="Phone #" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fax #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Fax #]"
+                      name="Fax #" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Pharmacy Technician]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Pharmacy Technician]"
+                      name="Pharmacy Technician" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Head Nurse]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Head Nurse]"
+                      name="Head Nurse" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Head Nurse Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Head Nurse Phone Number]"
+                      name="Head Nurse Phone Number" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Office Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Office Manager]"
+                      name="Office Manager" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Office Manager Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Office Manager Phone Number]"
+                      name="Office Manager Phone Number" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Pharmacy Trainer]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Pharmacy Trainer]"
+                      name="Pharmacy Trainer" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Regional Clinical Pharmacist]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Regional Clinical Pharmacist]"
+                      name="Regional Clinical Pharmacist" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sr. Regional VP]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sr. Regional VP]"
+                      name="Sr. Regional VP" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sr. Regional VP Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Sr. Regional VP Phone Number]"
+                      name="Sr. Regional VP Phone Number" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Regional Director]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Regional Director]"
+                      name="Regional Director" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Regional Director Phone Number]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Regional Director Phone Number]"
+                      name="Regional Director Phone Number" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Research Coordinator]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Research Coordinator]"
+                      name="Research Coordinator" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Research]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Research]"
+                      name="Research" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Financial Counselor]"
+                      codePage="1252"
+                      dataType="str"
+                      length="300"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Financial Counselor]"
+                      name="Financial Counselor" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FC Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FC Manager]"
+                      name="FC Manager" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Rev Cycle Manager]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Rev Cycle Manager]"
+                      name="Rev Cycle Manager" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FedEx Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[FedEx Account #s]"
+                      name="FedEx Account #s" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Head Physician]"
+                      codePage="1252"
+                      dataType="str"
+                      length="150"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Head Physician]"
+                      name="Head Physician" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Physician License #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Physician License #]"
+                      name="Physician License #" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEA #]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[DEA #]"
+                      name="DEA #" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Oncology Supply Account #s]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Oncology Supply Account #s]"
+                      name="Oncology Supply Account #s" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Column29]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[Column29]"
+                      name="Column29" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LoadDate]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[LoadDate]"
+                      name="LoadDate" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DW PSS Insert\Row Count Insert"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count Insert">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::varInsertCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DW PSS Insert\Row Count Insert.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW PSS Insert\Row Count Insert.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Load DW PSS Insert\Row Count Insert.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load DW PSS Insert.Paths[OLE DB Source Output]"
+              endId="Package\DFT Load DW PSS Insert\Row Count Insert.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Load DW PSS Insert\OLE DB Source.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Load DW PSS Insert.Paths[Row Count Output 1]"
+              endId="Package\DFT Load DW PSS Insert\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT Load DW PSS Insert\Row Count Insert.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Execute SQL Task"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{9757EB74-F18E-42BF-9379-7FB31A5C6EE7}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Execute SQL Task"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2AB459DC-4FD1-4A14-A173-43AA78334694}"
+          SQLTask:SqlStatementSource="Truncate table DWSheetPharmacyMasterContactList" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package End"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{CC45A255-85B9-4932-9058-725FDEDD4B56}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package End"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2AB459DC-4FD1-4A14-A173-43AA78334694}"
+          SQLTask:SqlStatementSource="EXEC [uspLogAuditEnd] ?,?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::varAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::varInsertCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::varUpdateCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::varErrorCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="User::varTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{14782890-D347-4B46-8471-C78E29638769}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package Start"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2AB459DC-4FD1-4A14-A173-43AA78334694}"
+          SQLTask:SqlStatementSource="EXEC [uspLogAuditStart] ?,?,?,?,?,?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="AuditKey"
+            SQLTask:DtsVariableName="User::varAuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::varParentAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="$Project::strPackageVersion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::varTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="System::ParentContainerGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{B7F88257-2BD6-4851-B177-3C79493FEE81}"
+      DTS:From="Package\SQL Log Package Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Execute SQL Task" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{11701EF4-81D6-448E-81D3-28FEC92852E4}"
+      DTS:From="Package\Execute SQL Task"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT Load DW PSS Insert" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{69623743-74E3-48C3-84B0-9637AAA07A4A}"
+      DTS:From="Package\DFT Load DW PSS Insert"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Log Package End" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="196,41.6"
+          Id="Package\DFT Load DW PSS Insert"
+          TopLeft="8.50000000000003,209.5" />
+        <NodeLayout
+          Size="162.4,41.6"
+          Id="Package\Execute SQL Task"
+          TopLeft="28.5714290579971,93.2941189554737" />
+        <NodeLayout
+          Size="180.8,41.6"
+          Id="Package\SQL Log Package End"
+          TopLeft="22.5,311.5" />
+        <NodeLayout
+          Size="185.6,41.6"
+          Id="Package\SQL Log Package Start"
+          TopLeft="20,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="111.285714528999,47.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,46.1941189554736"
+              Start="0,0"
+              End="0,38.6941189554736">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,38.6941189554736" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="108.135714528999,134.894118955474">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,74.6058810445263"
+              Start="0,0"
+              End="0,67.1058810445263">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,67.1058810445263" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="109.7,251.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60.4"
+              Start="0,0"
+              End="0,52.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load DW PSS Insert">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="149.6,41.6"
+          Id="Package\DFT Load DW PSS Insert\OLE DB Source"
+          TopLeft="120,75" />
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\DFT Load DW PSS Insert\OLE DB Destination"
+          TopLeft="97,341" />
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\DFT Load DW PSS Insert\Row Count Insert"
+          TopLeft="52.5,209.5" />
+        <EdgeLayout
+          Id="Package\DFT Load DW PSS Insert.Paths[Row Count Output 1]"
+          TopLeft="132.9,251.1">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="49.3,89.9"
+              Start="0,0"
+              End="49.3,82.4">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.95" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.95"
+                    Point2="0,44.95"
+                    Point3="4,44.95" />
+                  <mssgle:LineSegment
+                    End="45.3,44.95" />
+                  <mssgle:CubicBezierSegment
+                    Point1="45.3,44.95"
+                    Point2="49.3,44.95"
+                    Point3="49.3,48.95" />
+                  <mssgle:LineSegment
+                    End="49.3,82.4" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DW PSS Insert.Paths[OLE DB Source Output]"
+          TopLeft="194.8,116.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-61.9,92.9"
+              Start="0,0"
+              End="-61.9,85.4">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,42.45"
+                    Point2="0,46.45"
+                    Point3="-4,46.45" />
+                  <mssgle:LineSegment
+                    End="-57.9,46.45" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-57.9,46.45"
+                    Point2="-61.9,46.45"
+                    Point3="-61.9,50.45" />
+                  <mssgle:LineSegment
+                    End="-61.9,85.4" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DW PSS Insert\OLE DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DW PSS Insert\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

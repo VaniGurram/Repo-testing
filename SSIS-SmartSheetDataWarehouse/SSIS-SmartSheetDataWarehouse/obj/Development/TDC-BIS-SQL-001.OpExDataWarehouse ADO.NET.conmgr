@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="TDC-BIS-SQL-001.OpExDataWarehouse ADO.NET"
+  DTS:DTSID="{DCAE253C-0AAF-4964-9082-9AAE1CD50B9A}"
+  DTS:CreationName="ADO.NET:SQL">
+  <DTS:PropertyExpression
+    DTS:Name="ConnectionString">@[$Project::SrtOpExDataWarehouseADONET_ConnectionString]</DTS:PropertyExpression>
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectionString="Data Source=AZC-BIS-SQL-002;Initial Catalog=AONOpExDW;Integrated Security=True;Application Name=SSIS-insupdate-{DCAE253C-0AAF-4964-9082-9AAE1CD50B9A}TDC-BIS-SQL-001.OpExDataWarehouse 1;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>

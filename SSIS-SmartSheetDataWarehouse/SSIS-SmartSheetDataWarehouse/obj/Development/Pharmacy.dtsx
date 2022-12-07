@@ -1,0 +1,2060 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="10/11/2019 8:50:57 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-PWC-UTL-003"
+  DTS:CreatorName="FCS\vani.gurram.FCS"
+  DTS:DTSID="{489347A3-903D-49DB-898E-790487F55443}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.1300.371"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Pharmacy"
+  DTS:PackageType="5"
+  DTS:VersionBuild="6"
+  DTS:VersionGUID="{105C34C4-08F9-4765-85C6-7B915F18326B}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:ConnectionManagers>
+    <DTS:ConnectionManager
+      DTS:refId="Package.ConnectionManagers[TF Excel Connection]"
+      DTS:CreationName="ExcelConnectionTF"
+      DTS:DTSID="{BDC3D8D4-D401-4D8A-A3F6-6D8EC0EFFB52}"
+      DTS:ObjectName="TF Excel Connection">
+      <DTS:ObjectData>
+        <ExcelConnectionManager
+          ConnectionString="FilePath=C:\Users\vani.gurram.FCS\Desktop\Pharmacy.xlsx;" />
+      </DTS:ObjectData>
+    </DTS:ConnectionManager>
+  </DTS:ConnectionManagers>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{269D4DBB-F0CB-4F80-8C91-7DF25DE52F69}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[au]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[au]"
+                      name="au"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ABS](1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ABS(1)</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[in]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[in]"
+                      name="in"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ABS](1)</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ABS(1)</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\OLE DB Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE DB Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[PharmacyExcelRaw]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\OLE DB Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{2AB459DC-4FD1-4A14-A173-43AA78334694}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TDC-BIS-SQL-001.OpExDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Created]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Clinic Name]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Clinic Name"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Medication Dispensing]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Medication Dispensing"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Dispensing]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Dispensing]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Medication Preparation]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Medication Preparation"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Preparation]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Preparation]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Medication Double Check]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Medication Double Check"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Double Check]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Daily Audit of Nucleus]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Daily Audit of Nucleus"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Daily Audit of Nucleus]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Daily Audit of Nucleus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Daily Hood Cleaning]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Daily Hood Cleaning"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Daily Hood Cleaning]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Daily Hood Cleaning]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Weekly Audit of Nucleus]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Weekly Audit of Nucleus"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Audit of Nucleus]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Audit of Nucleus]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Weekly Logs signed off]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Weekly Logs signed off"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Logs signed off]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Logs signed off]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Weekly Hood Cleaning]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Weekly Hood Cleaning"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Hood Cleaning]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Hood Cleaning]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Confirmed 2 RN signatures on MAR]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Confirmed 2 RN signatures on MAR"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed 2 RN signatures on MAR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Confirmed fluids for dilution]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Confirmed fluids for dilution"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed fluids for dilution]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed fluids for dilution]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Confirmed waste correct on MAR]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Confirmed waste correct on MAR"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed waste correct on MAR]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed waste correct on MAR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Gloves donned?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Gloves donned?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gloves donned?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Gloves donned?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Nucleus Pt ID confirmed to MAR?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus Pt ID confirmed to MAR?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nucleus drugs selected match MAR?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Nucleus drugs selected match MAR?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus drugs selected match MAR?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Nucleus doses match the MAR?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Nucleus doses match the MAR?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus doses match the MAR?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus doses match the MAR?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Correct vials pulled from Nucleus? (min. waste)"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Correct vials pulled from Nucleus? (min. waste)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Vial expiration dates checked?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Vial expiration dates checked?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vial expiration dates checked?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Vial expiration dates checked?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Wearing Gown?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Wearing Gown?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Wearing Gown?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Wearing Gown?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Do printed labels match MAR?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Do printed labels match MAR?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Do printed labels match MAR?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Do printed labels match MAR?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Medications prepared correctly?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Medications prepared correctly?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medications prepared correctly?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medications prepared correctly?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Labels correctly applied to meds?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Labels correctly applied to meds?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Labels correctly applied to meds?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Labels correctly applied to meds?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Medication Double Check performed correctly?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Medication Double Check performed correctly?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check performed correctly?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Double Check performed correctly?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Medication further diluted correctly? (if req'd)]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Medication further diluted correctly? (if req'd)"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication further diluted correctly? (if req'd)]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Dilution observed by 2nd PharmTech / Nurse?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Placed all meds in transport bag/bin?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Placed all meds in transport bag/bin?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Placed all meds in transport bag/bin?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[20% Audit Nucleus completed?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="20% Audit Nucleus completed?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[20% Audit Nucleus completed?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[20% Audit Nucleus completed?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Signed Daily Hood Cleaning Log?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Signed Daily Hood Cleaning Log?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed Daily Hood Cleaning Log?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[100% Audit Nucleus completed?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="100% Audit Nucleus completed?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[100% Audit Nucleus completed?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[100% Audit Nucleus completed?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Signed the Eye Wash Station Log?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Signed the Eye Wash Station Log?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed the Eye Wash Station Log?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Signed the Controlled Substance Log?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Signed the Controlled Substance Log?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Controlled Substance Log?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed the Controlled Substance Log?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[AUDITOR]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="AUDITOR"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[AUDITOR]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[au]"
+                      cachedDataType="i4"
+                      cachedName="au"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[au]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[au]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[in]"
+                      cachedDataType="i4"
+                      cachedName="in"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[in]"
+                      lineageId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output].Columns[in]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Performed  deactivation hood cleaning?]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Performed  deactivation hood cleaning?"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Performed  deactivation hood cleaning?]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].Columns[Source]"
+                      cachedDataType="wstr"
+                      cachedLength="250"
+                      cachedName="Source"
+                      externalMetadataColumnId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Source]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="wstr"
+                      length="250"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      dataType="wstr"
+                      length="250"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Dispensing]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Dispensing" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Preparation]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Preparation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Double Check" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Daily Audit of Nucleus]"
+                      dataType="wstr"
+                      length="250"
+                      name="Daily Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Daily Hood Cleaning]"
+                      dataType="wstr"
+                      length="250"
+                      name="Daily Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Audit of Nucleus]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Logs signed off]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Logs signed off" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Weekly Hood Cleaning]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed 2 RN signatures on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed fluids for dilution]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed fluids for dilution" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Confirmed waste correct on MAR]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed waste correct on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Gloves donned?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Gloves donned?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus Pt ID confirmed to MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus drugs selected match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Nucleus doses match the MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus doses match the MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      dataType="wstr"
+                      length="250"
+                      name="Correct vials pulled from Nucleus? (min. waste)" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Vial expiration dates checked?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Vial expiration dates checked?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Wearing Gown?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Wearing Gown?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Do printed labels match MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Do printed labels match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medications prepared correctly?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medications prepared correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Labels correctly applied to meds?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Labels correctly applied to meds?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication Double Check performed correctly?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Double Check performed correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication further diluted correctly? (if req'd)" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Dilution observed by 2nd PharmTech / Nurse?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Placed all meds in transport bag/bin?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[20% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      length="250"
+                      name="20% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed Daily Hood Cleaning Log?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[100% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      length="250"
+                      name="100% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed the Eye Wash Station Log?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Signed the Controlled Substance Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed the Controlled Substance Log?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[AUDITOR]"
+                      dataType="wstr"
+                      length="250"
+                      name="AUDITOR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Performed  deactivation hood cleaning?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[au]"
+                      dataType="i4"
+                      name="au" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input].ExternalColumns[in]"
+                      dataType="i4"
+                      name="in" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\OLE DB Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\TF Excel Source"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="TF Excel Source;SQL Sentry, LLC; Task Factory (c) 2009 - 2019; https://www.sentryone.com;support@sentryone.com"
+              description="TF Excel Source"
+              name="TF Excel Source"
+              usesDispositions="true"
+              validateExternalMetadata="False">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  name="DebugMode">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="The first column to read data from"
+                  expressionType="Notify"
+                  name="Column Start">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The last column to read data from"
+                  expressionType="Notify"
+                  name="Column End">-1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The first row to read data from"
+                  expressionType="Notify"
+                  name="Row Start">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="The last row to read data from"
+                  expressionType="Notify"
+                  name="Row End">-1</property>
+                <property
+                  dataType="System.String"
+                  description="The name of the worksheet to read data from"
+                  expressionType="Notify"
+                  name="Worksheet Name">Sheet1</property>
+                <property
+                  dataType="System.String"
+                  description="Named range to use when reading data"
+                  expressionType="Notify"
+                  name="Named Range"></property>
+                <property
+                  dataType="System.Int32"
+                  description="The mode of which to read the region from the excel spreadsheet"
+                  expressionType="Notify"
+                  name="Region Mode"
+                  typeConverter="PragmaticWorks.TaskFactory.Components.Sources.Excel+RegionMode">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicated if the first row of data contains the column names"
+                  expressionType="Notify"
+                  name="First Row Contains Column Name">true</property>
+                <property
+                  dataType="System.Int32"
+                  description="The format to read the rows out of the spreadsheet"
+                  expressionType="Notify"
+                  name="Output Format"
+                  typeConverter="PragmaticWorks.TaskFactory.Components.Sources.Excel+OutputFormatStyle">0</property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PragmaticWorks.TaskFactory.ExcelSource</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\TF Excel Source.Connections[EXCELCONNECTION]"
+                  connectionManagerID="Package.ConnectionManagers[TF Excel Connection]"
+                  connectionManagerRefId="Package.ConnectionManagers[TF Excel Connection]"
+                  description="Excel Connection"
+                  name="EXCELCONNECTION" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output]"
+                  errorRowDisposition="IgnoreFailure"
+                  name="Excel Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Created]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[ID]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[ID]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Clinic Name]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Dispensing]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Dispensing]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Dispensing]"
+                      name="Medication Dispensing" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Preparation]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Preparation]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Preparation]"
+                      name="Medication Preparation" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Double Check]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Double Check]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Double Check]"
+                      name="Medication Double Check" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Daily Audit of Nucleus]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Daily Audit of Nucleus]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Daily Audit of Nucleus]"
+                      name="Daily Audit of Nucleus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Daily Hood Cleaning]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Daily Hood Cleaning]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Daily Hood Cleaning]"
+                      name="Daily Hood Cleaning" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Audit of Nucleus]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Weekly Audit of Nucleus]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Audit of Nucleus]"
+                      name="Weekly Audit of Nucleus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Logs signed off]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Weekly Logs signed off]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Logs signed off]"
+                      name="Weekly Logs signed off" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Hood Cleaning]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Weekly Hood Cleaning]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Weekly Hood Cleaning]"
+                      name="Weekly Hood Cleaning" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      name="Confirmed 2 RN signatures on MAR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed fluids for dilution]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirmed fluids for dilution]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed fluids for dilution]"
+                      name="Confirmed fluids for dilution" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed waste correct on MAR]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirmed waste correct on MAR]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Confirmed waste correct on MAR]"
+                      name="Confirmed waste correct on MAR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Gloves donned?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Gloves donned?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Gloves donned?]"
+                      name="Gloves donned?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      name="Nucleus Pt ID confirmed to MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus drugs selected match MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus drugs selected match MAR?]"
+                      name="Nucleus drugs selected match MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus doses match the MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Nucleus doses match the MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Nucleus doses match the MAR?]"
+                      name="Nucleus doses match the MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      name="Correct vials pulled from Nucleus? (min. waste)" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Vial expiration dates checked?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Vial expiration dates checked?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Vial expiration dates checked?]"
+                      name="Vial expiration dates checked?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Wearing Gown?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Wearing Gown?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Wearing Gown?]"
+                      name="Wearing Gown?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Do printed labels match MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Do printed labels match MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Do printed labels match MAR?]"
+                      name="Do printed labels match MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medications prepared correctly?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medications prepared correctly?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medications prepared correctly?]"
+                      name="Medications prepared correctly?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Labels correctly applied to meds?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Labels correctly applied to meds?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Labels correctly applied to meds?]"
+                      name="Labels correctly applied to meds?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Double Check performed correctly?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Double Check performed correctly?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication Double Check performed correctly?]"
+                      name="Medication Double Check performed correctly?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      name="Medication further diluted correctly? (if req'd)" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      name="Dilution observed by 2nd PharmTech / Nurse?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Placed all meds in transport bag/bin?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Placed all meds in transport bag/bin?]"
+                      name="Placed all meds in transport bag/bin?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[20% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[20% Audit Nucleus completed?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[20% Audit Nucleus completed?]"
+                      name="20% Audit Nucleus completed?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      name="Signed Daily Hood Cleaning Log?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[100% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[100% Audit Nucleus completed?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[100% Audit Nucleus completed?]"
+                      name="100% Audit Nucleus completed?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed the Eye Wash Station Log?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed the Eye Wash Station Log?]"
+                      name="Signed the Eye Wash Station Log?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed the Controlled Substance Log?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Signed the Controlled Substance Log?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Signed the Controlled Substance Log?]"
+                      name="Signed the Controlled Substance Log?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Performed  deactivation hood cleaning?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[Performed  deactivation hood cleaning?]"
+                      name="Performed  deactivation hood cleaning?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[AUDITOR]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[AUDITOR]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].Columns[AUDITOR]"
+                      name="AUDITOR" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="250"
+                      name="Source">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">1</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Created]"
+                      dataType="wstr"
+                      length="250"
+                      name="Created">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">2</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[ID]"
+                      dataType="wstr"
+                      length="250"
+                      name="ID">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">3</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Clinic Name">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">4</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Dispensing]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Dispensing">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">5</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Preparation]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Preparation">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">6</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Double Check]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Double Check">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">7</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Daily Audit of Nucleus]"
+                      dataType="wstr"
+                      length="250"
+                      name="Daily Audit of Nucleus">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">8</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Daily Hood Cleaning]"
+                      dataType="wstr"
+                      length="250"
+                      name="Daily Hood Cleaning">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">9</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Weekly Audit of Nucleus]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Audit of Nucleus">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">10</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Weekly Logs signed off]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Logs signed off">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">11</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Weekly Hood Cleaning]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Hood Cleaning">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">12</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed 2 RN signatures on MAR">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">13</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirmed fluids for dilution]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed fluids for dilution">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">14</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Confirmed waste correct on MAR]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed waste correct on MAR">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">15</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Gloves donned?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Gloves donned?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">16</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus Pt ID confirmed to MAR?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus drugs selected match MAR?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">18</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Nucleus doses match the MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus doses match the MAR?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">19</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      dataType="wstr"
+                      length="250"
+                      name="Correct vials pulled from Nucleus? (min. waste)">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">20</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Vial expiration dates checked?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Vial expiration dates checked?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">21</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Wearing Gown?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Wearing Gown?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">22</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Do printed labels match MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Do printed labels match MAR?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">23</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medications prepared correctly?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medications prepared correctly?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">24</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Labels correctly applied to meds?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Labels correctly applied to meds?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">25</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication Double Check performed correctly?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Double Check performed correctly?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">26</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication further diluted correctly? (if req'd)">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">27</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Dilution observed by 2nd PharmTech / Nurse?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">28</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Placed all meds in transport bag/bin?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">29</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[20% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      length="250"
+                      name="20% Audit Nucleus completed?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">30</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed Daily Hood Cleaning Log?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">31</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[100% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      length="250"
+                      name="100% Audit Nucleus completed?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">32</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed the Eye Wash Station Log?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">33</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Signed the Controlled Substance Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed the Controlled Substance Log?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">34</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Performed  deactivation hood cleaning?">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">35</property>
+                      </properties>
+                    </externalMetadataColumn>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output].ExternalColumns[AUDITOR]"
+                      dataType="wstr"
+                      length="250"
+                      name="AUDITOR">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          expressionType="Notify"
+                          name="Index">36</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output]"
+                  isErrorOut="true"
+                  name="Excel Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Source]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Source]"
+                      name="Source" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Created]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Created]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ID]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[ID]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Clinic Name]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Clinic Name]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Clinic Name]"
+                      name="Clinic Name" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Dispensing]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Dispensing]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Dispensing]"
+                      name="Medication Dispensing" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Preparation]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Preparation]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Preparation]"
+                      name="Medication Preparation" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Double Check]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Double Check]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Double Check]"
+                      name="Medication Double Check" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Daily Audit of Nucleus]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Daily Audit of Nucleus]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Daily Audit of Nucleus]"
+                      name="Daily Audit of Nucleus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Daily Hood Cleaning]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Daily Hood Cleaning]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Daily Hood Cleaning]"
+                      name="Daily Hood Cleaning" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Weekly Audit of Nucleus]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Weekly Audit of Nucleus]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Weekly Audit of Nucleus]"
+                      name="Weekly Audit of Nucleus" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Weekly Logs signed off]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Weekly Logs signed off]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Weekly Logs signed off]"
+                      name="Weekly Logs signed off" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Weekly Hood Cleaning]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Weekly Hood Cleaning]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Weekly Hood Cleaning]"
+                      name="Weekly Hood Cleaning" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirmed 2 RN signatures on MAR]"
+                      name="Confirmed 2 RN signatures on MAR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirmed fluids for dilution]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirmed fluids for dilution]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirmed fluids for dilution]"
+                      name="Confirmed fluids for dilution" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirmed waste correct on MAR]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirmed waste correct on MAR]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Confirmed waste correct on MAR]"
+                      name="Confirmed waste correct on MAR" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Gloves donned?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Gloves donned?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Gloves donned?]"
+                      name="Gloves donned?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Nucleus Pt ID confirmed to MAR?]"
+                      name="Nucleus Pt ID confirmed to MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Nucleus drugs selected match MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Nucleus drugs selected match MAR?]"
+                      name="Nucleus drugs selected match MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Nucleus doses match the MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Nucleus doses match the MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Nucleus doses match the MAR?]"
+                      name="Nucleus doses match the MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Correct vials pulled from Nucleus? (min. waste)]"
+                      name="Correct vials pulled from Nucleus? (min. waste)" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Vial expiration dates checked?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Vial expiration dates checked?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Vial expiration dates checked?]"
+                      name="Vial expiration dates checked?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Wearing Gown?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Wearing Gown?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Wearing Gown?]"
+                      name="Wearing Gown?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Do printed labels match MAR?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Do printed labels match MAR?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Do printed labels match MAR?]"
+                      name="Do printed labels match MAR?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medications prepared correctly?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medications prepared correctly?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medications prepared correctly?]"
+                      name="Medications prepared correctly?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Labels correctly applied to meds?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Labels correctly applied to meds?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Labels correctly applied to meds?]"
+                      name="Labels correctly applied to meds?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Double Check performed correctly?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Double Check performed correctly?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication Double Check performed correctly?]"
+                      name="Medication Double Check performed correctly?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Medication further diluted correctly? (if req'd)]"
+                      name="Medication further diluted correctly? (if req'd)" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      name="Dilution observed by 2nd PharmTech / Nurse?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Placed all meds in transport bag/bin?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Placed all meds in transport bag/bin?]"
+                      name="Placed all meds in transport bag/bin?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[20% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[20% Audit Nucleus completed?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[20% Audit Nucleus completed?]"
+                      name="20% Audit Nucleus completed?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Signed Daily Hood Cleaning Log?]"
+                      name="Signed Daily Hood Cleaning Log?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[100% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[100% Audit Nucleus completed?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[100% Audit Nucleus completed?]"
+                      name="100% Audit Nucleus completed?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Signed the Eye Wash Station Log?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Signed the Eye Wash Station Log?]"
+                      name="Signed the Eye Wash Station Log?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Signed the Controlled Substance Log?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Signed the Controlled Substance Log?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Signed the Controlled Substance Log?]"
+                      name="Signed the Controlled Substance Log?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Performed  deactivation hood cleaning?]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[Performed  deactivation hood cleaning?]"
+                      name="Performed  deactivation hood cleaning?" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[AUDITOR]"
+                      dataType="wstr"
+                      externalMetadataColumnId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[AUDITOR]"
+                      length="250"
+                      lineageId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].Columns[AUDITOR]"
+                      name="AUDITOR" />
+                  </outputColumns>
+                  <externalMetadataColumns>
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Source]"
+                      dataType="wstr"
+                      length="250"
+                      name="Source" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Created]"
+                      dataType="wstr"
+                      length="250"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[ID]"
+                      dataType="wstr"
+                      length="250"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Clinic Name]"
+                      dataType="wstr"
+                      length="250"
+                      name="Clinic Name" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Dispensing]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Dispensing" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Preparation]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Preparation" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Double Check]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Double Check" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Daily Audit of Nucleus]"
+                      dataType="wstr"
+                      length="250"
+                      name="Daily Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Daily Hood Cleaning]"
+                      dataType="wstr"
+                      length="250"
+                      name="Daily Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Weekly Audit of Nucleus]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Audit of Nucleus" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Weekly Logs signed off]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Logs signed off" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Weekly Hood Cleaning]"
+                      dataType="wstr"
+                      length="250"
+                      name="Weekly Hood Cleaning" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirmed 2 RN signatures on MAR]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed 2 RN signatures on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirmed fluids for dilution]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed fluids for dilution" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Confirmed waste correct on MAR]"
+                      dataType="wstr"
+                      length="250"
+                      name="Confirmed waste correct on MAR" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Gloves donned?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Gloves donned?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Nucleus Pt ID confirmed to MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus Pt ID confirmed to MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Nucleus drugs selected match MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus drugs selected match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Nucleus doses match the MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Nucleus doses match the MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Correct vials pulled from Nucleus? (min. waste)]"
+                      dataType="wstr"
+                      length="250"
+                      name="Correct vials pulled from Nucleus? (min. waste)" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Vial expiration dates checked?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Vial expiration dates checked?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Wearing Gown?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Wearing Gown?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Do printed labels match MAR?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Do printed labels match MAR?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medications prepared correctly?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medications prepared correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Labels correctly applied to meds?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Labels correctly applied to meds?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication Double Check performed correctly?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication Double Check performed correctly?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Medication further diluted correctly? (if req'd)]"
+                      dataType="wstr"
+                      length="250"
+                      name="Medication further diluted correctly? (if req'd)" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Dilution observed by 2nd PharmTech / Nurse?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Dilution observed by 2nd PharmTech / Nurse?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Placed all meds in transport bag/bin?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Placed all meds in transport bag/bin?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[20% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      length="250"
+                      name="20% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Signed Daily Hood Cleaning Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed Daily Hood Cleaning Log?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[100% Audit Nucleus completed?]"
+                      dataType="wstr"
+                      length="250"
+                      name="100% Audit Nucleus completed?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Signed the Eye Wash Station Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed the Eye Wash Station Log?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Signed the Controlled Substance Log?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Signed the Controlled Substance Log?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[Performed  deactivation hood cleaning?]"
+                      dataType="wstr"
+                      length="250"
+                      name="Performed  deactivation hood cleaning?" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Error Output].ExternalColumns[AUDITOR]"
+                      dataType="wstr"
+                      length="250"
+                      name="AUDITOR" />
+                  </externalMetadataColumns>
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Derived Column Output]"
+              endId="Package\Data Flow Task\OLE DB Destination.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Data Flow Task\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[Excel Source Output]"
+              endId="Package\Data Flow Task\Derived Column.Inputs[Derived Column Input]"
+              name="Excel Source Output"
+              startId="Package\Data Flow Task\TF Excel Source.Outputs[Excel Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph">
+        <NodeLayout
+          Size="151,42"
+          Id="Package\Data Flow Task"
+          TopLeft="5.5,5.5" />
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\TF Excel Source"
+          TopLeft="83,40" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\Data Flow Task\Derived Column"
+          TopLeft="316,117" />
+        <NodeLayout
+          Size="171,42"
+          Id="Package\Data Flow Task\OLE DB Destination"
+          TopLeft="119,179" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Excel Source Output]"
+          TopLeft="160,82">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="233,35"
+              Start="0,0"
+              End="233,27.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.5"
+                    Point2="0,17.5"
+                    Point3="4,17.5" />
+                  <mssgle:LineSegment
+                    End="229,17.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="229,17.5"
+                    Point2="233,17.5"
+                    Point3="233,21.5" />
+                  <mssgle:LineSegment
+                    End="233,27.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Derived Column Output]"
+          TopLeft="316,138">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-26,62"
+              Start="0,0"
+              End="-18.5,62">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-9,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-9,0"
+                    Point2="-13,0"
+                    Point3="-13,4" />
+                  <mssgle:LineSegment
+                    End="-13,58" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13,58"
+                    Point2="-13,62"
+                    Point3="-17,62" />
+                  <mssgle:LineSegment
+                    End="-18.5,62" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\OLE DB Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,2904 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/2/2018 11:27:07 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="TDC-PWC-UTL-001"
+  DTS:CreatorName="FCS\ven.pwc.mwinitzer"
+  DTS:DTSID="{0614F90A-59FA-4D00-9B06-723BE75BAB86}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="15.0.2000.68"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="LoadDWClinicClosures"
+  DTS:PackageType="5"
+  DTS:VersionBuild="47"
+  DTS:VersionGUID="{A8704415-90A0-4216-A5AE-F6B71BA698AD}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:LogProviders>
+    <DTS:LogProvider
+      DTS:ConfigString="OLEDB_BIXPRESS_1"
+      DTS:CreationName="Microsoft.LogProviderSQLServer"
+      DTS:DelayValidation="True"
+      DTS:Description="SSISOps : DON'T CHANGE PREFIX. "
+      DTS:DTSID="{16CD62CC-2789-4A0F-BF83-B85B1BB90325}"
+      DTS:ObjectName="BIxPress Log Provider">
+      <DTS:ObjectData>
+        <InnerObject />
+      </DTS:ObjectData>
+    </DTS:LogProvider>
+  </DTS:LogProviders>
+  <DTS:PackageParameters>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="8"
+      DTS:DTSID="{83038432-1D46-4C7C-886B-4BFE4698C91A}"
+      DTS:ObjectName="StrOpExDataWarehouseADONET_ConnectionString">
+      <DTS:Property
+        DTS:DataType="8"
+        DTS:Name="ParameterValue">Data Source=TDC-BIS-SQL-001;Initial Catalog=OpExDataWarehouse;Integrated Security=True;Application Name=SSIS-insupdate-{A2062547-1CBE-4B56-8AA7-96B3D61A62AD}TDC-BIS-SQL-001.OpExDataWarehouse 1;</DTS:Property>
+    </DTS:PackageParameter>
+    <DTS:PackageParameter
+      DTS:CreationName=""
+      DTS:DataType="3"
+      DTS:DTSID="{89377276-763B-4739-9C44-E7C49CC006B2}"
+      DTS:ObjectName="varParentAuditKey">
+      <DTS:Property
+        DTS:DataType="3"
+        DTS:Name="ParameterValue">0</DTS:Property>
+    </DTS:PackageParameter>
+  </DTS:PackageParameters>
+  <DTS:Variables>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{FF9DBC62-4D21-402D-B409-C474D1F93823}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varAuditKey"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{2467EB1E-2412-4908-878A-930621968C93}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varErrorCount"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{868BD3AB-FE61-49E0-9004-1CC2AF15D619}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varInsertCount"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{F4BBD0C8-E366-42C0-8F35-340C95921006}"
+      DTS:EvaluateAsExpression="True"
+      DTS:Expression="&quot;ClinicClosure&quot;"
+      DTS:IncludeInDebugDump="2345"
+      DTS:Namespace="User"
+      DTS:ObjectName="varTableName"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="8">ClinicClosure</DTS:VariableValue>
+    </DTS:Variable>
+    <DTS:Variable
+      DTS:CreationName=""
+      DTS:DTSID="{AE653C1E-0E67-439D-AAE8-544DC359BBF7}"
+      DTS:IncludeInDebugDump="6789"
+      DTS:Namespace="User"
+      DTS:ObjectName="varUpdateCount"
+      DTS:RaiseChangedEvent="True">
+      <DTS:VariableValue
+        DTS:DataType="3">0</DTS:VariableValue>
+    </DTS:Variable>
+  </DTS:Variables>
+  <DTS:LoggingOptions
+    DTS:FilterKind="0"
+    DTS:LoggingMode="1">
+    <DTS:Property
+      DTS:DataType="8"
+      DTS:Name="EventFilter">7,22,PipelineInitialization,18,OnPipelineRowsSent,24,OnPipelinePrePrimeOutput,25,OnPipelinePostPrimeOutput,24,OnPipelinePreEndOfRowset,25,OnPipelinePostEndOfRowset,7,OnError</DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnError"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePostPrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePreEndOfRowset"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelinePrePrimeOutput"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="OnPipelineRowsSent"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:Property
+      DTS:EventName="PipelineInitialization"
+      DTS:Name="ColumnFilter">
+      <DTS:Property
+        DTS:Name="Computer">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="Operator">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceName">0</DTS:Property>
+      <DTS:Property
+        DTS:Name="SourceID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="ExecutionID">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="MessageText">-1</DTS:Property>
+      <DTS:Property
+        DTS:Name="DataBytes">0</DTS:Property>
+    </DTS:Property>
+    <DTS:SelectedLogProviders>
+      <DTS:SelectedLogProvider
+        DTS:InstanceID="{16CD62CC-2789-4A0F-BF83-B85B1BB90325}" />
+    </DTS:SelectedLogProviders>
+  </DTS:LoggingOptions>
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\DFT Load DW ClinicClosure Insert"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{E931E4C4-12F2-4E4E-AF6A-ECFBE97A2DD1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT Load DW ClinicClosure Insert"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT Load DW ClinicClosure Insert\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output].Columns[InsertAuditKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output].Columns[InsertAuditKey]"
+                      name="InsertAuditKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::varAuditKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::varAuditKey]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output].Columns[UpdateAuditKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output].Columns[UpdateAuditKey]"
+                      name="UpdateAuditKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::varAuditKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::varAuditKey]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DW ClinicClosure Insert\DEST OLE_DST DW ClinicClosure"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="SSISOps : DON'T CHANGE PREFIX. "
+              name="DEST OLE_DST DW ClinicClosure">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::varInsertCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DW ClinicClosure Insert\DEST OLE_DST DW ClinicClosure.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\DEST OLE_DST DW ClinicClosure.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Load DW ClinicClosure Insert\DEST OLE_DST DW ClinicClosure.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="OLE_DST DW ClinicClosure"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dbo].[DWSmartSheetClinicClosure]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Connections[OleDbConnection]"
+                  connectionManagerID="{2AB459DC-4FD1-4A14-A173-43AA78334694}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[AZC-BIS-SQL-002 OpExDataWarehouse]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[InsertAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="InsertAuditKey"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output].Columns[InsertAuditKey]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[UpdateAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="UpdateAuditKey"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output].Columns[UpdateAuditKey]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[ID]"
+                      cachedDataType="i8"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[ID]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Created]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Comments]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Comments"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Comments]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Comments]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Pharmacy]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pharmacy"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Pharmacy]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Pharmacy]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Nursing]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Nursing"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Nursing]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Nursing]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[PSS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PSS"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[PSS]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[PSS]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[MA]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="MA"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[MA]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[MA]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Total # days closed]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Total # days closed"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Total # days closed]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Total # days closed]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[End Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End Date"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[End Date]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[End Date]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Start Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Start Date"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Start Date]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Start Date]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Last Name (Notifier)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Last Name (Notifier)"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Last Name (Notifier)]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Last Name (Notifier)]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[First Name (notifier)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="First Name (notifier)"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[First Name (notifier)]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[First Name (notifier)]" />
+                    <inputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].Columns[Clinic]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Clinic"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Clinic]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Clinic]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[InsertAuditKey]"
+                      dataType="i4"
+                      name="InsertAuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[UpdateAuditKey]"
+                      dataType="i4"
+                      name="UpdateAuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[ClinicClosureID]"
+                      dataType="i4"
+                      name="ClinicClosureID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Clinic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Clinic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[First Name (notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="First Name (notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Last Name (Notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Last Name (Notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Start Date]"
+                      dataType="dbDate"
+                      name="Start Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[End Date]"
+                      dataType="dbDate"
+                      name="End Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Total # days closed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Total # days closed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[MA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MA" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[PSS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PSS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Nursing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nursing" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Pharmacy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pharmacy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input].ExternalColumns[Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Comments" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC Stage ClinicClosure"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">exec usp_DWSmartSheetClinicClosures 'I'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Connections[OleDbConnection]"
+                  connectionManagerID="{E9BDF7A8-FEA5-4998-ACA7-E0EA6D09642D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TDC-BIS-SQL-001.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Created]"
+                      name="Created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Clinic]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Clinic]"
+                      length="15"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Clinic]"
+                      name="Clinic"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[First Name (notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[First Name (notifier)]"
+                      length="25"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[First Name (notifier)]"
+                      name="First Name (notifier)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Last Name (Notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Last Name (Notifier)]"
+                      length="25"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Last Name (Notifier)]"
+                      name="Last Name (Notifier)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Start Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Start Date]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Start Date]"
+                      name="Start Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[End Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[End Date]"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[End Date]"
+                      name="End Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Total # days closed]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Total # days closed]"
+                      length="100"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Total # days closed]"
+                      name="Total # days closed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[MA]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[MA]"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[MA]"
+                      name="MA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[PSS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[PSS]"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[PSS]"
+                      name="PSS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Nursing]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Nursing]"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Nursing]"
+                      name="Nursing"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Pharmacy]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy]"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Pharmacy]"
+                      name="Pharmacy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Comments]"
+                      length="100"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Comments]"
+                      name="Comments"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Clinic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Clinic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[First Name (notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="First Name (notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Last Name (Notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Last Name (Notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Start Date]"
+                      dataType="dbDate"
+                      name="Start Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[End Date]"
+                      dataType="dbDate"
+                      name="End Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Total # days closed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Total # days closed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[MA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MA" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[PSS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PSS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Nursing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nursing" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pharmacy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Comments" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i8"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Clinic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Clinic]"
+                      name="Clinic" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[First Name (notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[First Name (notifier)]"
+                      name="First Name (notifier)" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Last Name (Notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Last Name (Notifier)]"
+                      name="Last Name (Notifier)" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Start Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Start Date]"
+                      name="Start Date" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[End Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[End Date]"
+                      name="End Date" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Total # days closed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Total # days closed]"
+                      name="Total # days closed" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[MA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[MA]"
+                      name="MA" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[PSS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[PSS]"
+                      name="PSS" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Nursing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Nursing]"
+                      name="Nursing" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Pharmacy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Pharmacy]"
+                      name="Pharmacy" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Comments]"
+                      name="Comments" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DW ClinicClosure Insert\Row Count Insert"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count Insert">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::varInsertCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DW ClinicClosure Insert\Row Count Insert.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\Row Count Insert.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Load DW ClinicClosure Insert\Row Count Insert.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT Load DW ClinicClosure Insert\SRC OLE_SRC Stage ClinicClosure"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="SSISOps : DON'T CHANGE PREFIX. "
+              name="SRC OLE_SRC Stage ClinicClosure">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::varInsertCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT Load DW ClinicClosure Insert\SRC OLE_SRC Stage ClinicClosure.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT Load DW ClinicClosure Insert\SRC OLE_SRC Stage ClinicClosure.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT Load DW ClinicClosure Insert\SRC OLE_SRC Stage ClinicClosure.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT Load DW ClinicClosure Insert.Paths[Derived Column Output]"
+              endId="Package\DFT Load DW ClinicClosure Insert\DEST OLE_DST DW ClinicClosure.Inputs[Row Count Input 1]"
+              name="Derived Column Output"
+              startId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT Load DW ClinicClosure Insert.Paths[OLE DB Source Output]"
+              endId="Package\DFT Load DW ClinicClosure Insert\SRC OLE_SRC Stage ClinicClosure.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT Load DW ClinicClosure Insert.Paths[Row Count Output 1]"
+              endId="Package\DFT Load DW ClinicClosure Insert\Derived Column.Inputs[Derived Column Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT Load DW ClinicClosure Insert\Row Count Insert.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT Load DW ClinicClosure Insert.Paths[Row Count Output 3]"
+              endId="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure.Inputs[OLE DB Destination Input]"
+              name="Row Count Output 3"
+              startId="Package\DFT Load DW ClinicClosure Insert\DEST OLE_DST DW ClinicClosure.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT Load DW ClinicClosure Insert.Paths[Row Count Output 31]"
+              endId="Package\DFT Load DW ClinicClosure Insert\Row Count Insert.Inputs[Row Count Input 1]"
+              name="Row Count Output 3"
+              startId="Package\DFT Load DW ClinicClosure Insert\SRC OLE_SRC Stage ClinicClosure.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\DFT LoadDW ClinicClosure Update"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{29DF7B74-D875-408D-8620-0533D4EBB08C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="DFT LoadDW ClinicClosure Update"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\DFT LoadDW ClinicClosure Update\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Output].Columns[InsertAuditKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Output].Columns[InsertAuditKey]"
+                      name="InsertAuditKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::varAuditKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::varAuditKey]</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Output].Columns[UpdateAuditKey]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Output].Columns[UpdateAuditKey]"
+                      name="UpdateAuditKey"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">@[User::varAuditKey]</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">@[User::varAuditKey]</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="OLE_SRC Stage ClinicClosure"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor, Microsoft.DataTransformationServices.Controls, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91">exec [dbo].[usp_DWSmartSheetClinicClosures] 'U'</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Connections[OleDbConnection]"
+                  connectionManagerID="{E9BDF7A8-FEA5-4998-ACA7-E0EA6D09642D}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TDC-BIS-SQL-001.OpExStage]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[ID]"
+                      dataType="i8"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[ID]"
+                      name="ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Created]"
+                      name="Created"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Clinic]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Clinic]"
+                      length="15"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Clinic]"
+                      name="Clinic"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[First Name (notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[First Name (notifier)]"
+                      length="25"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[First Name (notifier)]"
+                      name="First Name (notifier)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Last Name (Notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Last Name (Notifier)]"
+                      length="25"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Last Name (Notifier)]"
+                      name="Last Name (Notifier)"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Start Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Start Date]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Start Date]"
+                      name="Start Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[End Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[End Date]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[End Date]"
+                      name="End Date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Total # days closed]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Total # days closed]"
+                      length="100"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Total # days closed]"
+                      name="Total # days closed"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[MA]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[MA]"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[MA]"
+                      name="MA"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[PSS]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[PSS]"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[PSS]"
+                      name="PSS"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Nursing]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Nursing]"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Nursing]"
+                      name="Nursing"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Pharmacy]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy]"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Pharmacy]"
+                      name="Pharmacy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Comments]"
+                      length="100"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Comments]"
+                      name="Comments"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Clinic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Clinic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[First Name (notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="First Name (notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Last Name (Notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      name="Last Name (Notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Start Date]"
+                      dataType="dbDate"
+                      name="Start Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[End Date]"
+                      dataType="dbDate"
+                      name="End Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Total # days closed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Total # days closed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[MA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="MA" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[PSS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="PSS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Nursing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Nursing" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Pharmacy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      name="Pharmacy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].ExternalColumns[Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      name="Comments" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      dataType="i8"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ID]"
+                      name="ID" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Created]"
+                      name="Created" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Clinic]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Clinic]"
+                      name="Clinic" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[First Name (notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[First Name (notifier)]"
+                      name="First Name (notifier)" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Last Name (Notifier)]"
+                      codePage="1252"
+                      dataType="str"
+                      length="25"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Last Name (Notifier)]"
+                      name="Last Name (Notifier)" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Start Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Start Date]"
+                      name="Start Date" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[End Date]"
+                      dataType="dbDate"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[End Date]"
+                      name="End Date" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Total # days closed]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Total # days closed]"
+                      name="Total # days closed" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[MA]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[MA]"
+                      name="MA" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[PSS]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[PSS]"
+                      name="PSS" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Nursing]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Nursing]"
+                      name="Nursing" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Pharmacy]"
+                      codePage="1252"
+                      dataType="str"
+                      length="10"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Pharmacy]"
+                      name="Pharmacy" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Comments]"
+                      codePage="1252"
+                      dataType="str"
+                      length="100"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[Comments]"
+                      name="Comments" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT LoadDW ClinicClosure Update\Row Count"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Counts rows as they pass through a data flow. For example, use the number of rows processed to determine whether or not to perform cleanup operations, or update text in an e-mail message to communicate processing status."
+              name="Row Count">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::varUpdateCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT LoadDW ClinicClosure Update\Row Count.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadDW ClinicClosure Update\Row Count.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT LoadDW ClinicClosure Update\Row Count.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT LoadDW ClinicClosure Update\SRC OLE_SRC Stage HeadNurse"
+              componentClassID="Microsoft.RowCount"
+              contactInfo="Row Count;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="SSISOps : DON'T CHANGE PREFIX. "
+              name="SRC OLE_SRC Stage HeadNurse">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable to hold the row count."
+                  name="VariableName">User::varUpdateCount</property>
+              </properties>
+              <inputs>
+                <input
+                  refId="Package\DFT LoadDW ClinicClosure Update\SRC OLE_SRC Stage HeadNurse.Inputs[Row Count Input 1]"
+                  hasSideEffects="true"
+                  name="Row Count Input 1">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadDW ClinicClosure Update\SRC OLE_SRC Stage HeadNurse.Outputs[Row Count Output 1]"
+                  name="Row Count Output 1"
+                  synchronousInputId="Package\DFT LoadDW ClinicClosure Update\SRC OLE_SRC Stage HeadNurse.Inputs[Row Count Input 1]">
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination"
+              componentClassID="Microsoft.ManagedComponentHost"
+              contactInfo="Upsert Destinaton; SentryOne; Task Factory © 2019 SQL Sentry, LLC; http://www.sentryone.com;support@sentryone.com"
+              description="The Upsert Destination takes input data coming from the pipeline and then conditionally inserts, updates or deletes data from the destination."
+              name="TF Upsert Destination"
+              usesDispositions="true"
+              version="14">
+              <properties>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="DebugMode">false</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="DESTINATION_TABLE_NAME">[dbo].[DWSmartSheetClinicClosure]</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="ENABLE_IDENTITY_INSERT">false</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="INSERT_ROWS_COUNT_VARIABLE">&lt;Select Variable&gt;</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="UPDATE_ROWS_COUNT_VARIABLE">&lt;Select Variable&gt;</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="COMMAND_TIMEOUT">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="UPDATE_METHOD"
+                  typeConverter="PW.TaskFactory.Enums+UpsertUpdateMethod">1</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="ACTION_UPDATE">true</property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="ACTION_INSERT">false</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="POST_UPDATE_COLUMN"></property>
+                <property
+                  dataType="System.Boolean"
+                  expressionType="Notify"
+                  name="TURN_OFF_INTERNAL_TRANSACTION">false</property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="ROW_FLAG_COLUMN"></property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="ROW_FLAG_COLUMN_INSERT_VALUE"></property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="ROW_FLAG_COLUMN_DELETE_VALUE"></property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="ROW_FLAG_COLUMN_REJECT_VALUE"></property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="ROW_FLAG_COLUMN_UPDATE_VALUE"></property>
+                <property
+                  dataType="System.String"
+                  expressionType="Notify"
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="AccessMode"
+                  typeConverter="PW.TaskFactory.Enums+UpsertAccessModeEnum">0</property>
+                <property
+                  dataType="System.Int32"
+                  expressionType="Notify"
+                  name="UPSERT_METHOD"
+                  typeConverter="PW.TaskFactory.Enums+UpsertMethod">0</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates the Upsert destination will use a custom definition for it's temp table creation"
+                  expressionType="Notify"
+                  name="Use Custom Temp Table">false</property>
+                <property
+                  dataType="System.String"
+                  description="Definition of the custom temp table script"
+                  expressionType="Notify"
+                  name="Custom Temp Table Definition"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Use a merge statement for the insert and updates instead of two seperate insert and update statements"
+                  expressionType="Notify"
+                  name="Use Merge Statement">false</property>
+                <property
+                  dataType="System.String"
+                  description="The script to run before each buffer is sent to the destination"
+                  expressionType="Notify"
+                  name="Before Script"></property>
+                <property
+                  dataType="System.String"
+                  description="The script to run after each buffer is sent to the destination"
+                  expressionType="Notify"
+                  name="After Script"></property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set to true if you want the component to fail if the before script throws an exception."
+                  expressionType="Notify"
+                  name="Fail Component If Before Script Throws Exception">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Set to true if you want the component to fail if the after script throws an exception."
+                  expressionType="Notify"
+                  name="Fail Component If After Script Throws Exception">false</property>
+                <property
+                  dataType="System.String"
+                  description="Allows you to set a table hint for the destination table (e.g. NOLOCK - SNAPSHOT)."
+                  expressionType="Notify"
+                  name="Table Hint"></property>
+                <property
+                  dataType="System.String"
+                  name="UserComponentTypeName">PW.TaskFactory.UpsertDestination</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Connections[DestinationConnection]"
+                  connectionManagerID="{DCAE253C-0AAF-4964-9082-9AAE1CD50B9A}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[TDC-BIS-SQL-001.OpExDataWarehouse ADO.NET]"
+                  description="Connection for the destination"
+                  name="DestinationConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input]"
+                  errorOrTruncationOperation="Error or Truncation"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[ID]"
+                      cachedDataType="i8"
+                      cachedName="ID"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[ID]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">ID</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Created]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="Created"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Created]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Created]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Created</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Clinic]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Clinic"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Clinic]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Clinic]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Clinic</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">true</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[First Name (notifier)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="First Name (notifier)"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[First Name (notifier)]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[First Name (notifier)]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">First Name (notifier)</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Last Name (Notifier)]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="25"
+                      cachedName="Last Name (Notifier)"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Last Name (Notifier)]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Last Name (Notifier)]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Last Name (Notifier)</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Start Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Start Date"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Start Date]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Start Date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Start Date</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[End Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End Date"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[End Date]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[End Date]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">End Date</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Total # days closed]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Total # days closed"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Total # days closed]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Total # days closed]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Total # days closed</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[MA]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="MA"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[MA]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[MA]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">MA</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[PSS]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="PSS"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[PSS]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[PSS]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">PSS</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Nursing]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Nursing"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Nursing]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Nursing]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Nursing</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Pharmacy]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="10"
+                      cachedName="Pharmacy"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Pharmacy]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Pharmacy]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Pharmacy</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[Comments]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="100"
+                      cachedName="Comments"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Comments]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output].Columns[Comments]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">Comments</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].Columns[UpdateAuditKey]"
+                      cachedDataType="i4"
+                      cachedName="UpdateAuditKey"
+                      externalMetadataColumnId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[UpdateAuditKey]"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Output].Columns[UpdateAuditKey]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Mapped Column for Destination"
+                          name="DestinationColumn">UpdateAuditKey</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column A Key Column"
+                          name="IsKeyColumn">false</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Is Column An Identity Column"
+                          name="IsIdentityColumn">false</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[ClinicClosureID]"
+                      dataType="i4"
+                      name="ClinicClosureID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[ID]"
+                      dataType="i8"
+                      name="ID" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Created]"
+                      dataType="dbTimeStamp"
+                      name="Created" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Clinic]"
+                      dataType="wstr"
+                      length="15"
+                      name="Clinic" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[First Name (notifier)]"
+                      dataType="wstr"
+                      length="25"
+                      name="First Name (notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Last Name (Notifier)]"
+                      dataType="wstr"
+                      length="25"
+                      name="Last Name (Notifier)" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Start Date]"
+                      dataType="dbTimeStamp"
+                      name="Start Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[End Date]"
+                      dataType="dbTimeStamp"
+                      name="End Date" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Total # days closed]"
+                      dataType="wstr"
+                      length="100"
+                      name="Total # days closed" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[MA]"
+                      dataType="wstr"
+                      length="10"
+                      name="MA" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[PSS]"
+                      dataType="wstr"
+                      length="10"
+                      name="PSS" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Nursing]"
+                      dataType="wstr"
+                      length="10"
+                      name="Nursing" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Pharmacy]"
+                      dataType="wstr"
+                      length="10"
+                      name="Pharmacy" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[Comments]"
+                      dataType="wstr"
+                      length="100"
+                      name="Comments" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[InsertAuditKey]"
+                      dataType="i4"
+                      name="InsertAuditKey" />
+                    <externalMetadataColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input].ExternalColumns[UpdateAuditKey]"
+                      dataType="i4"
+                      name="UpdateAuditKey" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Outputs[Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Error Output"
+                  synchronousInputId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Outputs[Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Outputs[Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                    <outputColumn
+                      refId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Outputs[Error Output].Columns[ErrorDescription]"
+                      dataType="wstr"
+                      length="1024"
+                      lineageId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Outputs[Error Output].Columns[ErrorDescription]"
+                      name="ErrorDescription" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\DFT LoadDW ClinicClosure Update.Paths[Derived Column Output]"
+              endId="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination.Inputs[Input]"
+              name="Derived Column Output"
+              startId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\DFT LoadDW ClinicClosure Update.Paths[OLE DB Source Output]"
+              endId="Package\DFT LoadDW ClinicClosure Update\SRC OLE_SRC Stage HeadNurse.Inputs[Row Count Input 1]"
+              name="OLE DB Source Output"
+              startId="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\DFT LoadDW ClinicClosure Update.Paths[Row Count Output 1]"
+              endId="Package\DFT LoadDW ClinicClosure Update\Derived Column.Inputs[Derived Column Input]"
+              name="Row Count Output 1"
+              startId="Package\DFT LoadDW ClinicClosure Update\Row Count.Outputs[Row Count Output 1]" />
+            <path
+              refId="Package\DFT LoadDW ClinicClosure Update.Paths[Row Count Output 2]"
+              endId="Package\DFT LoadDW ClinicClosure Update\Row Count.Inputs[Row Count Input 1]"
+              name="Row Count Output 2"
+              startId="Package\DFT LoadDW ClinicClosure Update\SRC OLE_SRC Stage HeadNurse.Outputs[Row Count Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package End"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{C99E2534-46F0-4086-8DAA-3FD4A06CC7B5}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package End"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2AB459DC-4FD1-4A14-A173-43AA78334694}"
+          SQLTask:SqlStatementSource="EXEC [uspLogAuditEnd] ?,?,?,?,?" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="User::varAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="User::varInsertCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="User::varUpdateCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::varErrorCount"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="User::varTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\SQL Log Package Start"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{D1B8EC28-3C4D-4309-B4AE-8C13B31E3B0C}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="SQL Log Package Start"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2017 RC1; © 2017 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{2AB459DC-4FD1-4A14-A173-43AA78334694}"
+          SQLTask:SqlStatementSource="EXEC [uspLogAuditStart] ?,?,?,?,?,?"
+          SQLTask:ResultType="ResultSetType_SingleRow" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask">
+          <SQLTask:ResultBinding
+            SQLTask:ResultName="AuditKey"
+            SQLTask:DtsVariableName="User::varAuditKey" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="0"
+            SQLTask:DtsVariableName="$Package::varParentAuditKey"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="3"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="1"
+            SQLTask:DtsVariableName="System::PackageName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="2"
+            SQLTask:DtsVariableName="$Project::strPackageVersion"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="3"
+            SQLTask:DtsVariableName="User::varTableName"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="4"
+            SQLTask:DtsVariableName="System::ExecutionInstanceGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+          <SQLTask:ParameterBinding
+            SQLTask:ParameterName="5"
+            SQLTask:DtsVariableName="System::ParentContainerGUID"
+            SQLTask:ParameterDirection="Input"
+            SQLTask:DataType="129"
+            SQLTask:ParameterSize="-1" />
+        </SQLTask:SqlTaskData>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{FF754994-25DA-4DB4-A35E-7C023480F229}"
+      DTS:From="Package\SQL Log Package Start"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\DFT LoadDW ClinicClosure Update" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{8592C0F8-D6FD-4D46-BE73-EC3F1516C8B5}"
+      DTS:From="Package\DFT LoadDW ClinicClosure Update"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\DFT Load DW ClinicClosure Insert" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 2]"
+      DTS:CreationName=""
+      DTS:DTSID="{01EED324-0378-42CB-A4F7-A6CA283633A1}"
+      DTS:From="Package\DFT Load DW ClinicClosure Insert"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 2"
+      DTS:To="Package\SQL Log Package End" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="238,42"
+          Id="Package\DFT Load DW ClinicClosure Insert"
+          TopLeft="8.50000000000003,209.5" />
+        <NodeLayout
+          Size="240,42"
+          Id="Package\DFT LoadDW ClinicClosure Update"
+          TopLeft="5.50000000000001,107.5" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\SQL Log Package End"
+          TopLeft="22.5,311.5" />
+        <NodeLayout
+          Size="186,42"
+          Id="Package\SQL Log Package Start"
+          TopLeft="20,5.5" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="113,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,60"
+              Start="0,0"
+              End="12.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="8.50000000000001,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.50000000000001,30"
+                    Point2="12.5,30"
+                    Point3="12.5,34" />
+                  <mssgle:LineSegment
+                    End="12.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="126.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 2]"
+          TopLeft="127.5,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.5,60"
+              Start="0,0"
+              End="-14.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="-4,30" />
+                  <mssgle:LineSegment
+                    End="-10.5,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.5,30"
+                    Point2="-14.5,30"
+                    Point3="-14.5,34" />
+                  <mssgle:LineSegment
+                    End="-14.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\DFT Load DW ClinicClosure Insert">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="215,42"
+          Id="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure"
+          TopLeft="16.5,5.5" />
+        <NodeLayout
+          Size="235,42"
+          Id="Package\DFT Load DW ClinicClosure Insert\DEST OLE_DST DW ClinicClosure"
+          TopLeft="8.00000000000009,420.5" />
+        <NodeLayout
+          Size="206,42"
+          Id="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure"
+          TopLeft="39.5000000000001,525.5" />
+        <NodeLayout
+          Size="238,42"
+          Id="Package\DFT Load DW ClinicClosure Insert\SRC OLE_SRC Stage ClinicClosure"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\DFT Load DW ClinicClosure Insert\Derived Column"
+          TopLeft="64.0000000000001,321.5" />
+        <NodeLayout
+          Size="161,42"
+          Id="Package\DFT Load DW ClinicClosure Insert\Row Count Insert"
+          TopLeft="52.5,209.5" />
+        <EdgeLayout
+          Id="Package\DFT Load DW ClinicClosure Insert.Paths[Row Count Output 31]"
+          TopLeft="124.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.49999999999997,60"
+              Start="0,0"
+              End="8.49999999999997,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="4.49999999999997,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.49999999999997,30"
+                    Point2="8.49999999999997,30"
+                    Point3="8.49999999999997,34" />
+                  <mssgle:LineSegment
+                    End="8.49999999999997,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DW ClinicClosure Insert.Paths[Row Count Output 3]"
+          TopLeft="125.5,462.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17,63"
+              Start="0,0"
+              End="17,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,27.5"
+                    Point2="0,31.5"
+                    Point3="4,31.5" />
+                  <mssgle:LineSegment
+                    End="13,31.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13,31.5"
+                    Point2="17,31.5"
+                    Point3="17,35.5" />
+                  <mssgle:LineSegment
+                    End="17,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DW ClinicClosure Insert.Paths[Row Count Output 1]"
+          TopLeft="133,251.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.00000000000006,70"
+              Start="0,0"
+              End="8.00000000000006,62.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,31" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,31"
+                    Point2="0,35"
+                    Point3="4,35" />
+                  <mssgle:LineSegment
+                    End="4.00000000000006,35" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.00000000000006,35"
+                    Point2="8.00000000000006,35"
+                    Point3="8.00000000000006,39" />
+                  <mssgle:LineSegment
+                    End="8.00000000000006,62.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DW ClinicClosure Insert.Paths[OLE DB Source Output]"
+          TopLeft="124.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT Load DW ClinicClosure Insert.Paths[Derived Column Output]"
+          TopLeft="141,363.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-15.5,57"
+              Start="0,0"
+              End="-15.5,49.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.5"
+                    Point2="0,28.5"
+                    Point3="-4,28.5" />
+                  <mssgle:LineSegment
+                    End="-11.5,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-11.5,28.5"
+                    Point2="-15.5,28.5"
+                    Point3="-15.5,32.5" />
+                  <mssgle:LineSegment
+                    End="-15.5,49.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DW ClinicClosure Insert\OLE_SRC Stage ClinicClosure">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT Load DW ClinicClosure Insert\OLE_DST DW ClinicClosure">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\DFT LoadDW ClinicClosure Update">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="215,42"
+          Id="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure"
+          TopLeft="16.5,5.5" />
+        <NodeLayout
+          Size="181,42"
+          Id="Package\DFT LoadDW ClinicClosure Update\TF Upsert Destination"
+          TopLeft="295,371" />
+        <NodeLayout
+          Size="230,42"
+          Id="Package\DFT LoadDW ClinicClosure Update\SRC OLE_SRC Stage HeadNurse"
+          TopLeft="5.50000000000003,107.5" />
+        <NodeLayout
+          Size="154,42"
+          Id="Package\DFT LoadDW ClinicClosure Update\Derived Column"
+          TopLeft="347,242" />
+        <NodeLayout
+          Size="130,42"
+          Id="Package\DFT LoadDW ClinicClosure Update\Row Count"
+          TopLeft="68,209.5" />
+        <EdgeLayout
+          Id="Package\DFT LoadDW ClinicClosure Update.Paths[Row Count Output 2]"
+          TopLeft="120.5,149.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="12.5,60"
+              Start="0,0"
+              End="12.5,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26"
+                    Point2="0,30"
+                    Point3="4,30" />
+                  <mssgle:LineSegment
+                    End="8.49999999999997,30" />
+                  <mssgle:CubicBezierSegment
+                    Point1="8.49999999999997,30"
+                    Point2="12.5,30"
+                    Point3="12.5,34" />
+                  <mssgle:LineSegment
+                    End="12.5,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT LoadDW ClinicClosure Update.Paths[Row Count Output 1]"
+          TopLeft="198,230.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="149,32.5"
+              Start="0,0"
+              End="141.5,32.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="70.5,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.5,0"
+                    Point2="74.5,0"
+                    Point3="74.5,4" />
+                  <mssgle:LineSegment
+                    End="74.5,28.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="74.5,28.5"
+                    Point2="74.5,32.5"
+                    Point3="78.5,32.5" />
+                  <mssgle:LineSegment
+                    End="141.5,32.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT LoadDW ClinicClosure Update.Paths[OLE DB Source Output]"
+          TopLeft="122.25,47.5">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,60"
+              Start="0,0"
+              End="0,52.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,52.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\DFT LoadDW ClinicClosure Update.Paths[Derived Column Output]"
+          TopLeft="424,284">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-38.5,87"
+              Start="0,0"
+              End="-38.5,79.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,39.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,39.5"
+                    Point2="0,43.5"
+                    Point3="-4,43.5" />
+                  <mssgle:LineSegment
+                    End="-34.5,43.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-34.5,43.5"
+                    Point2="-38.5,43.5"
+                    Point3="-38.5,47.5" />
+                  <mssgle:LineSegment
+                    End="-38.5,79.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\DFT LoadDW ClinicClosure Update\OLE_SRC Stage ClinicClosure">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
